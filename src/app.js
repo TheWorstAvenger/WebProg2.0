@@ -5,6 +5,7 @@ import stylesheet from "./app.css";
 import Navigo from "navigo/lib/navigo.js";
 import Overview from "./overview/overview.js";
 import Detail from "./detail/detail.js";
+import Hinzufuegen from "./hinzufuegen/hinzufuegen.js";
     /**
      * Hauptklasse der Anwendung. Kümmert sich darum, die Anwendung auszuführen
      * und die angeforderten Bildschirmseiten anzuzeigen.
@@ -23,6 +24,7 @@ import Detail from "./detail/detail.js";
         this._router.on({
             "detail/display/:id":   params => this.showDetail(params.id, "display"),
             "detail/new":           () => this.showDetail("", "new"),
+            "Auto_hinzufuegen":   () => this.showHinzufuegen(),
             "overview":            () => this.showOverview(),
             "*":                    () => this.showOverview(),
         });
@@ -87,6 +89,12 @@ import Detail from "./detail/detail.js";
         let view = new Detail(this, id, mode);
         this._switchVisibleView(view);
     }
+
+    showHinzufuegen(){
+      let view = new Hinzufügen(this);
+      this._switchVisibleView(view);
+    }
+
     }
 
     export default App;
