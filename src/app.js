@@ -6,6 +6,7 @@ import Navigo from "navigo/lib/navigo.js";
 import Overview from "./overview/overview.js";
 import Detail from "./detail/detail.js";
 import Hinzufuegen from "./hinzufuegen/hinzufuegen.js";
+import Garage from "./garage/garage.js"
     /**
      * Hauptklasse der Anwendung. Kümmert sich darum, die Anwendung auszuführen
      * und die angeforderten Bildschirmseiten anzuzeigen.
@@ -25,6 +26,7 @@ import Hinzufuegen from "./hinzufuegen/hinzufuegen.js";
             "detail/display/:id":   params => this.showDetail(params.id, "display"),
             "detail/new":           () => this.showDetail("", "new"),
             "Auto_hinzufuegen":   () => this.showHinzufuegen(),
+            "Garage_anzeigen":    () => this.showGarage(),
             "overview":            () => this.showOverview(),
             "*":                    () => this.showOverview(),
         });
@@ -92,6 +94,11 @@ import Hinzufuegen from "./hinzufuegen/hinzufuegen.js";
 
     showHinzufuegen(){
       let view = new Hinzufuegen(this);
+      this._switchVisibleView(view);
+    }
+
+    showGarage(){
+      let view = new Garage(this);
       this._switchVisibleView(view);
     }
 
