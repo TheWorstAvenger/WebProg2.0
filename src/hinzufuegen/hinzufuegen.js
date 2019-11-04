@@ -12,10 +12,10 @@ class Hinzufuegen {
     onShow() {
         //create Container from imported HTML
         let container = document.createElement("div");
-        container.innerHTML = overview.trim();
+        container.innerHTML = hinzufuegen.trim();
 
         // Anzuzeigende HTML-Elemente ermitteln
-        let section = container.querySelector("#hinzufügen").cloneNode(true);
+        let section = container.querySelector("#hinzufuegen").cloneNode(true);
         let content = {
             className: "hinzufuegen",
             main: section.querySelectorAll("main > *"),

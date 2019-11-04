@@ -91,7 +91,7 @@ import Hinzufuegen from "./hinzufuegen/hinzufuegen.js";
     }
 
     showHinzufuegen(){
-      let view = new Hinzufügen(this);
+      let view = new Hinzufuegen(this);
       this._switchVisibleView(view);
     }
 
