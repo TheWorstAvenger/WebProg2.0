@@ -16,7 +16,7 @@ import Garage from "./garage/garage.js"
          * Konstruktor.
          */
         constructor() {
-            this._title = "My App";
+            this._title = "Porsche Garage";
             this._currentView = null;
 
         this._router = new Navigo(null, true);
