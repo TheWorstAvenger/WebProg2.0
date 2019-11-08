@@ -4,7 +4,7 @@
           <h1>Auto hinzufügen</h1>
               <form id=autoForm>
                   <label>Modell:
-                      <select id="modell">
+                      <select id="modell" onchange="dropmenu()>
                           <option>-----</option>
                           <option>911</option>
                           <option>718</option>
@@ -15,22 +15,12 @@
                   </label>
                   <label>Baureihe:
                       <select id="baureihe">
-                          <option>-----</option>
-                          <option>911</option>
-                          <option>718</option>
-                          <option>Cayenne</option>
-                          <option>Macan</option>
-                          <option>Panamera</option>
+
                       </select>
                   </label>
                   <label>Variante:
                       <select id="variante">
-                          <option>-----</option>
-                          <option>911</option>
-                          <option>718</option>
-                          <option>Cayenne</option>
-                          <option>Macan</option>
-                          <option>Panamera</option>
+
                       </select>
                   </label>
                   <label>Baujahr: <input type="date" min="1900-01-01" max="2200-12-31" value="2018-07-22" id="bj" name="bj"></label>

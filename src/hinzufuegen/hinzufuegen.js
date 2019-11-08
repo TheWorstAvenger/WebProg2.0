@@ -29,7 +29,15 @@ class Hinzufuegen {
         return "Auto hinzufuegen";
     }
 
-
+    function dropmenu() {
+        var m = getElementById('modell').value;
+        var b = getElementById('baureihe');
+        if (m == 911) {
+            b = document.createElement("991");
+            b.text = 991;
+            b.add(991);
+        }
+    }
 }
 
 export default Hinzufuegen;
