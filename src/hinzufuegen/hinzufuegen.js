@@ -29,7 +29,7 @@ class Hinzufuegen {
         return "Auto hinzufuegen";
     }
 
-    function dropmenu() {
+    dropmenu() {
         var m = getElementById('modell').value;
         var b = getElementById('baureihe');
         if (m == 911) {
