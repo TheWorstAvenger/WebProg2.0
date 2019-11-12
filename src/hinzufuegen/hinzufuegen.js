@@ -29,7 +29,21 @@ class Hinzufuegen {
         return "Auto hinzufuegen";
     }
 
-
+    dropmenu() {
+        var m = document.getElementById('modell').value;
+        var b = document.getElementById('baureihe');
+        if (m == '911') {
+            b = document.createElement("991");
+            b.text = '991';
+            b.add('991');
+        }
+    }
 }
 
 export default Hinzufuegen;
+
+let klickMichButton = document.getElementById("klick-mich-button");
+    klickMichButton.addEventListener("click", () => {
+        console.log("SPEICHERN!!");
+
+});
