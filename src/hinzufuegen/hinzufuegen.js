@@ -28,8 +28,6 @@ class Hinzufuegen {
     get title() {
         return "Auto hinzufuegen";
     }
-
-
 }
 
 export default Hinzufuegen;
