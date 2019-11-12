@@ -1,9 +1,10 @@
 "use strict";
 
-import App from "./app.js";
-import stylesheet from "./index.css";
 import "babel-core/register";
 import "babel-polyfill";
+import App from "./app.js";
+import stylesheet from "./index.css";
+
 
     // Erst loslaufen, wenn das Document Object Modul bereit ist
     window.addEventListener("load", () => {
