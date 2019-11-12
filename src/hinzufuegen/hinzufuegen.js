@@ -41,3 +41,9 @@ class Hinzufuegen {
 }
 
 export default Hinzufuegen;
+
+let klickMichButton = document.getElementById("klick-mich-button");
+    klickMichButton.addEventListener("click", () => {
+        console.log("SPEICHERN!!");
+
+});
