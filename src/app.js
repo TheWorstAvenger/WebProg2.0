@@ -7,6 +7,7 @@ import Overview from "./overview/overview.js";
 import Detail from "./detail/detail.js";
 import Hinzufuegen from "./hinzufuegen/hinzufuegen.js";
 import Garage from "./garage/garage.js"
+
     /**
      * Hauptklasse der Anwendung. Kümmert sich darum, die Anwendung auszuführen
      * und die angeforderten Bildschirmseiten anzuzeigen.
@@ -18,26 +19,20 @@ import Garage from "./garage/garage.js"
         constructor() {
             this._title = "Porsche Garage";
             this._currentView = null;
+            this.initRouter();
+          }
 
-        this._router = new Navigo('http://localhost:1234/', true);
+        initRouter(){
+        console.log("init Router");
+        this._router = new Navigo('http://localhost:1234/', false);
         this._currentUrl = "";
 
         this._router.on({
-            "detail/display/:id":   params => this.showDetail(params.id, "display"),
-            "detail/new":           () => this.showDetail("", "new"),
-            "Auto_hinzufuegen":   () => this.showHinzufuegen(),
-            "Garage_anzeigen":    () => this.showGarage(),
-            "overview":            () => this.showOverview(),
-            "*":                    () => this.showOverview(),
+            "Auto_hinzufuegen":   () =>{this.showHinzufuegen();},
+            "Garage_anzeigen":    () => {this.showGarage();},
+            "overview":            () => {this.showOverview();},
+            "*":                    () => {this.showOverview();},
         });
-
-        this._router.hooks({
-        after: (params) => {
-                // Navigation durchführen, daher die neue URL merken
-                this._currentUrl = this._router.lastRouteResolved().url;
-                }
-            }
-        );
         }
 
         /**
@@ -48,60 +43,63 @@ import Garage from "./garage/garage.js"
             this._router.resolve();
         }
 
-        _switchVisibleView(view) {
-            // Alles klar, aktuelle View nun wechseln
-            document.title = `${this._title} – ${view.title}`;
+      showOverview() {
+          let view = new Overview(this);
+          this._switchVisibleView(view);
+      }
 
-            this._currentView = view;
-            this._switchVisibleContent(view.onShow());
-            return true;
-        }
+      showDetail(id, mode){
+          let view = new Detail(this, id, mode);
+          this._switchVisibleView(view);
+      }
 
-    _switchVisibleContent(content) {
-        // <header> und <main> des HTML-Grundgerüsts ermitteln
-        let app = document.querySelector("#app");
-        let header = document.querySelector("#app > header");
-        let main = document.querySelector("#app > main");
-
-        // Zuvor angezeigte Inhalte entfernen
-        // Bei der Topbar nur die untere Zeile, im Hauptbereich alles!
-        app.className = "";
-        // header.querySelectorAll(".bottom").forEach(e => e.parentNode.removeChild(e));
-        main.innerHTML = "";
-
-        // CSS-Klasse übernehmen, um die viewspezifischen CSS-Regeln zu aktivieren
-        if (content && content.className) {
-            app.className = content.className;
-        }
-
-        // Neue Inhalte des Hauptbereichs einfügen
-        if (content && content.main) {
-            content.main.forEach(element => {
-                main.appendChild(element);
-            });
-        }
-    }
-
-    showOverview() {
-        let view = new Overview(this);
+      showHinzufuegen(){
+        let view = new Hinzufuegen(this);
         this._switchVisibleView(view);
-    }
+      }
 
-    showDetail(id, mode){
-        let view = new Detail(this, id, mode);
+      showGarage(){
+        let view = new Garage(this);
         this._switchVisibleView(view);
-    }
+      }
 
-    showHinzufuegen(){
-      let view = new Hinzufuegen(this);
-      this._switchVisibleView(view);
-    }
+      async _switchVisibleView(view) {
+          // Alles klar, aktuelle View nun wechseln
+          document.title = `${this._title} – ${view.title}`;
 
-    showGarage(){
-      let view = new Garage(this);
-      this._switchVisibleView(view);
-    }
+          this._currentView = view;
+          console.log()
+          var content =  await view.onShow();
+          this._switchVisibleContent(content);
+          return true;
+      }
 
-    }
+      _switchVisibleContent(content) {
+          // <header> und <main> des HTML-Grundgerüsts ermitteln
+          let app = document.querySelector("#app");
+          let header = document.querySelector("#app > header");
+          let main = document.querySelector("#app > main");
 
-    export default App;
+          // Zuvor angezeigte Inhalte entfernen
+          // Bei der Topbar nur die untere Zeile, im Hauptbereich alles!
+          app.className = "";
+          // header.querySelectorAll(".bottom").forEach(e => e.parentNode.removeChild(e));
+          main.innerHTML = "";
+
+          // CSS-Klasse übernehmen, um die viewspezifischen CSS-Regeln zu aktivieren
+          if (content && content.className) {
+              app.className = content.className;
+          }
+
+          // Neue Inhalte des Hauptbereichs einfügen
+          if (content && content.main) {
+              content.main.forEach(element => {
+                  main.appendChild(element);
+              });
+          }
+          this._router.updatePageLinks();
+      }
+
+      }
+
+      export default App;
