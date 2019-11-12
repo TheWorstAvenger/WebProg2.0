@@ -19,7 +19,7 @@ import Garage from "./garage/garage.js"
             this._title = "Porsche Garage";
             this._currentView = null;
 
-        this._router = new Navigo(null, true);
+        this._router = new Navigo('http://localhost:1234/', true);
         this._currentUrl = "";
 
         this._router.on({
