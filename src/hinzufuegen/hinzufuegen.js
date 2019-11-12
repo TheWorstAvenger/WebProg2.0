@@ -28,16 +28,6 @@ class Hinzufuegen {
     get title() {
         return "Auto hinzufuegen";
     }
-
-    dropmenu() {
-        var m = document.getElementById('modell').value;
-        var b = document.getElementById('baureihe');
-        if (m == '911') {
-            b = document.createElement("991");
-            b.text = '991';
-            b.add('991');
-        }
-    }
 }
 
 export default Hinzufuegen;
