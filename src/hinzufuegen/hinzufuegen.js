@@ -31,3 +31,9 @@ class Hinzufuegen {
 }
 
 export default Hinzufuegen;
+
+
+var speichern = document.getElementById("klick-mich-button")
+speichern.addEventListener("click", () => {
+  console.log("Speichern-Button");
+  });
