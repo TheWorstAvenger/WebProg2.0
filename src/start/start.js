@@ -1,23 +1,21 @@
 "use strict";
 
-class HinzufuegenPage {
+class StartPage {
 
     constructor(app){
         this.app = app;
     }
 
     async onShow() {
-        let hinzuPage = await this._importStartPageHtml();
+        let startPage = await this._importStartPageHtml();
 
-        hinzuPage.querySelector('.klickMich').addEventListener('click', () => {
-            console.log("KLICKMICH!!")
-        });
+      
 
-        return this._createContentObject(hinzuPage);
+        return this._createContentObject(startPage);
     }
 
     async _importStartPageHtml() {
-        const template = await import('./hinzufuegen.html');
+        const template = await import('./start.html');
         let container = document.createElement('div');
         container.innerHTML = template.trim();
         return container;
@@ -32,8 +30,8 @@ class HinzufuegenPage {
   }
 
     get title() {
-        return "hinzufügen";
+        return "Startseite";
     }
 }
 
-export default HinzufuegenPage;
+export default StartPage;

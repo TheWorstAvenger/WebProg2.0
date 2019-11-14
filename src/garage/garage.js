@@ -1,35 +1,37 @@
 "use strict";
 
-import stylesheet from "./garage.css";
-import garage from "./garage.html";
-
-class Garage {
+class GaragePage {
 
     constructor(app){
         this.app = app;
     }
 
-    onShow() {
-        //create Container from imported HTML
-        let container = document.createElement("div");
-        container.innerHTML = garage.trim();
+    async onShow() {
+        let garagePage = await this._importStartPageHtml();
 
-        // Anzuzeigende HTML-Elemente ermitteln
-        let section = container.querySelector("#garage").cloneNode(true);
-        let content = {
-            className: "garage",
-            main: section.querySelectorAll("main > *"),
-        };
 
-        // Ergebnis zurückliefern
-        return content;
+
+        return this._createContentObject(garagePage);
     }
+
+    async _importStartPageHtml() {
+        const template = await import('./garage.html');
+        let container = document.createElement('div');
+        container.innerHTML = template.trim();
+        return container;
+    }
+
+    _createContentObject(html) {
+      let content = {
+          className: "overview",
+          main: html.querySelectorAll('div > *')
+      };
+      return content;
+  }
 
     get title() {
         return "Garage";
     }
-
-
 }
 
-export default Garage;
+export default GaragePage;
