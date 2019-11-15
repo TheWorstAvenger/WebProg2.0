@@ -1,7 +1,7 @@
 <section>
 <h1>Auto hinzufügen</h1>
-  <label>Baureihe:
-      <select id="modell">
+  <label>Modell:
+      <select id="modell" name="modell">
             <option>-----</option>
             <option>911</option>
             <option>718</option>
@@ -11,19 +11,19 @@
         </select>
     </label>
     <label>Baureihe:
-        <select id="baureihe">
+        <select id="baureihe" name="baureihe">
             <option>-----</option>
         </select>
     </label>
     <label>Variante:
-        <select id="variante">
+        <select id="variante" name="variante">
             <option>-----</option>
         </select>
     </label>
     <label>Baujahr: <input type="date" min="1900-01-01" max="2200-12-31" value="2018-07-22" id="bj" name="bj"></label>
         <p>Geben Sie Karosserieform an:</p>
         <fieldset id="karosserieform">
-            <input type="radio" id="coupe" name="Karosserieform" value="Coupe">
+            <input type="radio" id="coupe" name="Karosserieform" value="Coupe" checked>
             <label for="coupe"> Coupe</label>
             <input type="radio" id="cabrio" name="Karosserieform" value="Cabrio">
             <label for="cabrio"> Cabrio</label>
