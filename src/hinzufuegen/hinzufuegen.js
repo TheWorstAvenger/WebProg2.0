@@ -29,8 +29,8 @@ class HinzufuegenPage {
             switch (modellText) {
               case "911":
                   console.log("911 ausgewählt")
-                  baureiheOptionArray = ["-----", "911","Baureihe1",  "Baureihe3",  "Baureihe3"];
-                  varianteOptionArray =["-----", "variante1", "variante2", "variante3"];
+                  baureiheOptionArray = ["-----", "G-Modell","964",  "993",  "996",  "997",  "991",  "992"];
+                  varianteOptionArray =["-----", "Carrera", "Carrera S", "Carrera 4", "Carrera 4S", "Turbo", "Turbo S", "GT3", "GT3 RS", "GT2 RS"];
                 break;
 
               case "718":
