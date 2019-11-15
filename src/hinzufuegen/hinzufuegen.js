@@ -6,20 +6,49 @@ class HinzufuegenPage {
         this.app = app;
     }
 
+
     async onShow() {
         let hinzuPage = await this._importStartPageHtml();
 
         hinzuPage.querySelector('.klickMich').addEventListener('click', () => {
-            console.log("KLICKMICH!!")
+            console.log("KLICKMICH!!");
+            var modellMenu = document.getElementById('modell');
+            var modellIndex = modellMenu.selectedIndex;
+            var modellText = modellMenu.options[modellIndex].text
+
+            var baureiheMenu = document.getElementById('baureihe');
+            var baureiheText = baureiheMenu.options[baureiheMenu.selectedIndex].text;
+
+            var varianteMenu = document.getElementById('variante');
+            var varianteText = varianteMenu.options[varianteMenu.selectedIndex].text;
+
+            if(modellText != "-----"){
+              var newCar = {
+                'id': "asdf",
+                'modell': modellText,
+                'baureihe': baureiheText,
+                'varante': varianteText,
+                'karosserieform': $('input[name="karosserieform"]:checked').index()/2,
+                'leistung': document.getElementById('ps').value,
+                'nm': document.getElementById('nm').value,
+                'hubraum': document.getElementById('hr').value,
+                'beschreibung': document.getElementById('beschreibung').value
+              };
+
+              console.log(newCar);
+            }
+
+
+
         });
 
         hinzuPage.querySelector('#modell').addEventListener('change', function(event) {
-            var modellMenu = document.querySelector('#modell');
+            var modellMenu = document.getElementById('modell');
             var modellIndex = modellMenu.selectedIndex;
             var modellText = modellMenu.options[modellIndex].text // geht auch mit event.target.value;
 
-            var baureiheMenu = document.querySelector('#baureihe');
-            var varianteMenu = document.querySelector('#variante');
+            var baureiheMenu = document.getElementById('baureihe');
+            var varianteMenu = document.getElementById('variante');
 
             var baureiheOptionArray;
             var varianteOptionArray;
@@ -81,17 +110,6 @@ class HinzufuegenPage {
 
 
         return this._createContentObject(hinzuPage);
-    }
-
-    populate(modellMenu, baureiheMenu){
-      var modellMenu = document.querySelector('#modell');
-      var baureiheMenu = document.querySelector('#baureihe');
-
-      baureiheMenu.innerHTML="";
-        if(modellMenu="911"){
-
-        }
-
     }
 
     async _importStartPageHtml() {
