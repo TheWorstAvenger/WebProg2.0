@@ -59,31 +59,31 @@ class HinzufuegenPage {
               case "911":
                   console.log("911 ausgewählt")
                   baureiheOptionArray = ["-----", "G-Modell","964",  "993",  "996",  "997",  "991",  "992"];
-                  varianteOptionArray =["-----", "Carrera", "Carrera S", "Carrera 4", "Carrera 4S", "Turbo", "Turbo S", "GT3", "GT3 RS", "GT2 RS"];
+                  varianteOptionArray =["-----", "Carrera", "Carrera S", "Carrera 4", "Carrera 4S", "Carrera GTS", "Turbo", "Turbo S", "GT3", "GT3 RS", "GT2 RS"];
                 break;
 
               case "718":
                   console.log("718 ausgewählt")
-                  baureiheOptionArray = ["-----", "718","Baureihe1",  "Baureihe3",  "Baureihe3"];
-                  varianteOptionArray =["-----", "variante1", "variante2", "variante3"];
+                  baureiheOptionArray = ["-----", "982"];
+                  varianteOptionArray =["-----", "Cayman","Cayman S",  "Cayman T",  "Cayman GTS"];
                   break;
 
               case "Cayenne":
                   console.log("Cayenne ausgewählt")
-                  baureiheOptionArray = ["-----", "Cayenne", "Baureihe1",  "Baureihe3",  "Baureihe3"];
-                  varianteOptionArray =["-----", "variante1", "variante2", "variante3"];
+                  baureiheOptionArray = ["-----", "9PA", "92A",  "PO536",  "Coupe"];
+                  varianteOptionArray =["-----", "Diesel", "S", "GTS", "Turbo", "Turbo S", "S-Hybrid", "S E-Hybrid","Turbo S E-Hybrid",];
                 break;
 
                case "Macan":
                   console.log("Macan ausgewählt")
-                  baureiheOptionArray = ["-----", "Macan", "Baureihe1",  "Baureihe3",  "Baureihe3"];
-                  varianteOptionArray =["-----", "variante1", "variante2", "variante3"];
+                  baureiheOptionArray = ["-----", "Macan"];
+                  varianteOptionArray =["-----", "S", "GTS", "Turbo", "S Diesel",];
                 break;
 
               case "Panamera":
                   console.log("Panamera ausgewählt")
-                   baureiheOptionArray = ["-----", "Panamera", "Baureihe1",  "Baureihe3",  "Baureihe3"];
-                   varianteOptionArray =["-----", "variante1", "variante2", "variante3"];
+                   baureiheOptionArray = ["-----", "970", "971"];
+                   varianteOptionArray =["-----", "4", "S", "4 S", "GTS", "S-Hybrid", "Turbo", "Turbo S", "Diesel", "S E-Hybrid","4 S Executive", "Turbo Executive", "Turbo S Executive"];
                 break;
 
               default:
