@@ -1,21 +1,21 @@
 "use strict";
 
-class GaragePage {
+class StartPage {
 
     constructor(app){
         this.app = app;
     }
 
     async onShow() {
-        let garagePage = await this._importStartPageHtml();
+        let startPage = await this._importStartPageHtml();
 
+      
 
-
-        return this._createContentObject(garagePage);
+        return this._createContentObject(startPage);
     }
 
     async _importStartPageHtml() {
-        const template = await import('./garage.html');
+        const template = await import('./start.html');
         let container = document.createElement('div');
         container.innerHTML = template.trim();
         return container;
@@ -30,8 +30,8 @@ class GaragePage {
   }
 
     get title() {
-        return "Garage";
+        return "Startseite";
     }
 }
 
-export default GaragePage;
+export default StartPage;

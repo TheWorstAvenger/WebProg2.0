@@ -1,27 +1,51 @@
 "use strict";
 
-import stylesheet from "./overview.css";
-import overview from "./overview.html";
+import "./overview.css";
+import DatabaseConnector from '../database/DatabaseConnector';
 
 class Overview {
 
     constructor(app){
         this.app = app;
+        this.db = new DatabaseConnector();
     }
 
-    onShow() {
-        //create Container from imported HTML
-        let container = document.createElement("div");
-        container.innerHTML = overview.trim();
+    async onShow() {
+        let adressTemplate = await this._importAdressTemplate();
+        let data = this._loadData();
+        let htmlToRender = this._processData(data, adressTemplate);
+        return this._createContentObject(htmlToRender);
+    }
 
-        // Anzuzeigende HTML-Elemente ermitteln
-        let section = container.querySelector("#overview").cloneNode(true);
+    _processData(data, template){
+        let container = document.createElement('div');
+        data.forEach((obj) => {
+            let div = template.querySelector('.adress-tempalte').cloneNode(true);
+            div.innerHTML = div.innerHTML.replace('$$NAME$$', obj.name);
+            div.innerHTML = div.innerHTML.replace('$$TEL$$', obj.tel);
+            div.innerHTML = div.innerHTML.replace('$$MAIL$$', obj.mail);
+            container.appendChild(div);
+        })
+        return container;
+    }
+    
+
+    async _importAdressTemplate() {
+        const template = await import('./adress-template.html');
+        let container = document.createElement('div');
+        container.innerHTML = template.trim();
+        return container;
+    }
+
+    _loadData(){
+        return this.db.read(this.db.defaultKey());
+    }
+
+    _createContentObject(html) {
         let content = {
             className: "overview",
-            main: section.querySelectorAll("main > *"),
+            main: html.querySelectorAll('div > *')
         };
-
-        // Ergebnis zurückliefern
         return content;
     }
 
