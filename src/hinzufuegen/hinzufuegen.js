@@ -15,6 +15,12 @@ class HinzufuegenPage {
         var idCounterMacan = 0;
         var idCounterPanamera = 0;
 
+        var data911=[];
+        var data718=[];
+        var dataCayenne=[];
+        var dataMacan=[];
+        var dataPanamera=[];
+
 
         hinzuPage.querySelector('.klickMich').addEventListener('click', () => {
             console.log("KLICKMICH!!");
@@ -43,23 +49,28 @@ class HinzufuegenPage {
 
               switch (modellText) {
                 case "911":
-                  newCar.id = "911-"+idCounter911++;
+                  newCar.id = idCounter911++;
+                  data911.push(newCar);
                   break;
 
                 case "718":
-                  newCar.id = "718-"+idCounter718++;
+                  newCar.id = idCounter718++;
+                  data718.push(newCar);
                   break;
 
                 case "Cayenne":
-                  newCar.id = "Cayenne-"+idCounterCayenne++;
+                  newCar.id = idCounterCayenne++;
+                  dataCayenne.push(newCar);
                   break;
 
                  case "Macan":
-                  newCar.id = "Macan-"+idCounterMacan++;
+                  newCar.id = idCounterMacan++;
+                  dataMacan.push(newCar);
                   break;
 
                 case "Panamera":
-                  newCar.id = "Panamera-"+idCounterPanamera++;
+                  newCar.id = idCounterPanamera++;
+                  dataPanamera.push(newCar)
                   break;
                 }
 
@@ -67,7 +78,16 @@ class HinzufuegenPage {
 
               var key= newCar.id;
               var data = JSON.stringify(newCar);
-              window.localStorage.setItem(key, data);
+              if (data911.length > 0)
+                window.localStorage.setItem("911", JSON.stringify(data911));
+              if (data718.length > 0)
+                window.localStorage.setItem("718", JSON.stringify(data718));
+              if (dataCayenne.length > 0)
+                window.localStorage.setItem("cayenne", JSON.stringify(dataCayenne));
+              if (dataMacan.length > 0)
+                window.localStorage.setItem("macan", JSON.stringify(dataMacan));
+              if (dataPanamera.length > 0)
+                window.localStorage.setItem("panamera", JSON.stringify(dataPanamera));
             }
         });
 
