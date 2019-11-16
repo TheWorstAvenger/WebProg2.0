@@ -6,9 +6,21 @@ class HinzufuegenPage {
         this.app = app;
     }
 
+    idCouner(){
+      idCounter=-1;
+      idCounter++;
+      return idCounter;
+    }
 
     async onShow() {
         let hinzuPage = await this._importStartPageHtml();
+
+        var idCounter911 = 0;
+        var idCounter718 = 0;
+        var idCounterCayenne = 0;
+        var idCounterMacan = 0;
+        var idCounterPanamera = 0;
+
 
         hinzuPage.querySelector('.klickMich').addEventListener('click', () => {
             console.log("KLICKMICH!!");
@@ -24,7 +36,7 @@ class HinzufuegenPage {
 
             if(modellText != "-----"){
               var newCar = {
-                'id': "asdf",
+                'id': 0,
                 'modell': modellText,
                 'baureihe': baureiheText,
                 'varante': varianteText,
@@ -35,11 +47,34 @@ class HinzufuegenPage {
                 'beschreibung': document.getElementById('beschreibung').value
               };
 
+              switch (modellText) {
+                case "911":
+                  newCar.id = "911-"+idCounter911++;
+                  break;
+
+                case "718":
+                  newCar.id = "718-"+idCounter718++;
+                  break;
+
+                case "Cayenne":
+                  newCar.id = "Cayenne-"+idCounterCayenne++;
+                  break;
+
+                 case "Macan":
+                  newCar.id = "Macan-"+idCounterMacan++;
+                  break;
+
+                case "Panamera":
+                  newCar.id = "Panamera-"+idCounterPanamera++;
+                  break;
+                }
+
               console.log(newCar);
+
+              var key= newCar.id;
+              var data = JSON.stringify(newCar);
+              window.localStorage.setItem(key, data);
             }
-
-
-
         });
 
         hinzuPage.querySelector('#modell').addEventListener('change', function(event) {
