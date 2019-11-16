@@ -9,17 +9,31 @@ class HinzufuegenPage {
     async onShow() {
         let hinzuPage = await this._importStartPageHtml();
 
-        var idCounter911 = 0;
-        var idCounter718 = 0;
-        var idCounterCayenne = 0;
-        var idCounterMacan = 0;
-        var idCounterPanamera = 0;
+        var data911=JSON.parse(localStorage.getItem("911"));
+        var data718=JSON.parse(localStorage.getItem("718"));
+        var dataCayenne=JSON.parse(localStorage.getItem("cayenne"));
+        var dataMacan=JSON.parse(localStorage.getItem("macan"));
+        var dataPanamera=JSON.parse(localStorage.getItem("panamera"));
 
-        var data911=[];
-        var data718=[];
-        var dataCayenne=[];
-        var dataMacan=[];
-        var dataPanamera=[];
+        if(data911 == null)
+          data911=[];
+        if(data718 == null)
+          data718=[];
+        if(dataCayenne == null)
+          dataCayenne=[];
+        if(dataPanamera == null)
+          dataPanamera=[];
+        if(dataMacan == null)
+          dataMacan=[];
+
+
+        var idCounter911 = data911.length;
+        var idCounter718 = data718.length;
+        var idCounterCayenne = dataCayenne.length;
+        var idCounterMacan = dataMacan.length;
+        var idCounterPanamera = dataPanamera.length;
+
+
 
 
         hinzuPage.querySelector('.klickMich').addEventListener('click', () => {
