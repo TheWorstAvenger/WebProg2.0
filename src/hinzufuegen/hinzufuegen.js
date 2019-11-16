@@ -6,12 +6,6 @@ class HinzufuegenPage {
         this.app = app;
     }
 
-    idCouner(){
-      idCounter=-1;
-      idCounter++;
-      return idCounter;
-    }
-
     async onShow() {
         let hinzuPage = await this._importStartPageHtml();
 
