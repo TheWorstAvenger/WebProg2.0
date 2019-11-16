@@ -9,6 +9,11 @@ class GaragePage {
     async onShow() {
         let garagePage = await this._importStartPageHtml();
 
+        garagePage.querySelector('.loeschen').addEventListener('click', () => {
+          console.log("ALLES LÖSCHEN!!");
+          localStorage.clear();
+        });
+
 
 
         return this._createContentObject(garagePage);
