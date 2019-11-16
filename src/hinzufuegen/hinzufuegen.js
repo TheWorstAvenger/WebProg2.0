@@ -6,9 +6,35 @@ class HinzufuegenPage {
         this.app = app;
     }
 
-
     async onShow() {
         let hinzuPage = await this._importStartPageHtml();
+
+        var data911=JSON.parse(localStorage.getItem("911"));
+        var data718=JSON.parse(localStorage.getItem("718"));
+        var dataCayenne=JSON.parse(localStorage.getItem("cayenne"));
+        var dataMacan=JSON.parse(localStorage.getItem("macan"));
+        var dataPanamera=JSON.parse(localStorage.getItem("panamera"));
+
+        if(data911 == null)
+          data911=[];
+        if(data718 == null)
+          data718=[];
+        if(dataCayenne == null)
+          dataCayenne=[];
+        if(dataPanamera == null)
+          dataPanamera=[];
+        if(dataMacan == null)
+          dataMacan=[];
+
+
+        var idCounter911 = data911.length;
+        var idCounter718 = data718.length;
+        var idCounterCayenne = dataCayenne.length;
+        var idCounterMacan = dataMacan.length;
+        var idCounterPanamera = dataPanamera.length;
+
+
+
 
         hinzuPage.querySelector('.klickMich').addEventListener('click', () => {
             console.log("KLICKMICH!!");
@@ -24,7 +50,7 @@ class HinzufuegenPage {
 
             if(modellText != "-----"){
               var newCar = {
-                'id': "asdf",
+                'id': 0,
                 'modell': modellText,
                 'baureihe': baureiheText,
                 'varante': varianteText,
@@ -35,11 +61,48 @@ class HinzufuegenPage {
                 'beschreibung': document.getElementById('beschreibung').value
               };
 
+              switch (modellText) {
+                case "911":
+                  newCar.id = idCounter911++;
+                  data911.push(newCar);
+                  break;
+
+                case "718":
+                  newCar.id = idCounter718++;
+                  data718.push(newCar);
+                  break;
+
+                case "Cayenne":
+                  newCar.id = idCounterCayenne++;
+                  dataCayenne.push(newCar);
+                  break;
+
+                 case "Macan":
+                  newCar.id = idCounterMacan++;
+                  dataMacan.push(newCar);
+                  break;
+
+                case "Panamera":
+                  newCar.id = idCounterPanamera++;
+                  dataPanamera.push(newCar)
+                  break;
+                }
+
               console.log(newCar);
+
+              var key= newCar.id;
+              var data = JSON.stringify(newCar);
+              if (data911.length > 0)
+                window.localStorage.setItem("911", JSON.stringify(data911));
+              if (data718.length > 0)
+                window.localStorage.setItem("718", JSON.stringify(data718));
+              if (dataCayenne.length > 0)
+                window.localStorage.setItem("cayenne", JSON.stringify(dataCayenne));
+              if (dataMacan.length > 0)
+                window.localStorage.setItem("macan", JSON.stringify(dataMacan));
+              if (dataPanamera.length > 0)
+                window.localStorage.setItem("panamera", JSON.stringify(dataPanamera));
             }
-
-
-
         });
 
         hinzuPage.querySelector('#modell').addEventListener('change', function(event) {
