@@ -1,5 +1,7 @@
 "use strict";
 
+import "./garage.css";
+
 class GaragePage {
 
     constructor(app){
@@ -9,7 +11,7 @@ class GaragePage {
     async onShow() {
         let garagePage = await this._importStartPageHtml();
 
-        garagePage.querySelector('.loeschen').addEventListener('click', () => {
+        garagePage.querySelector('.localstorageloeschen').addEventListener('click', () => {
           console.log("ALLES LÖSCHEN!!");
           localStorage.clear();
         });
