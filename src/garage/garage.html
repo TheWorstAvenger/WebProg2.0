@@ -1,6 +1,9 @@
 <section>
     <h1>Deine Porsche Garage</h1>
-    <button class="localstorageloeschen">Liste löschen</button>
+    <select class="nuranzeigen" name="nuranzeigen">
+      <option>Nur Favoriten</option>
+      <option>Alle</option>
+    </select>
     <select id="sortierung" name="sortierung">
       <option>Leistung Hoch-Niedrig</option>
       <option>Leistung Niedrig-Hoch</option>
@@ -9,9 +12,10 @@
       <option>Hubraum Hoch-Niedrig</option>
       <option>Hubraum Niedrig-Hoch</option>
     </select>
+    <button class="localstorageloeschen">Liste löschen</button>
   </section>
   <section>
-      <ul>
+      <ul id="autoliste">
       </ul>
 </section>
 <template id="neuesAuto">
@@ -58,7 +62,7 @@
         <input type="checkbox" name="favorit">
       </td>
       <td>
-        <button type="button" name="button">lösch das auto</button>
+        <button type="autoloeschen" name="autoloeschen">lösch das auto</button>
       </td>
     </table>
   </li>
