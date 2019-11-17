@@ -11,9 +11,67 @@ class GaragePage {
     async onShow() {
         let garagePage = await this._importStartPageHtml();
 
+        let carCount = localStorage.length;
+        console.log(carCount);
+        let carCount911 = JSON.parse(localStorage.getItem("911")).length;
+        console.log("911: "+carCount911);
+
+        for (var i = 0; i < carCount911.length; i++) {
+
+
+
+        var liste = document.createElement("ul");
+        var li = document.createElement("li");
+        var table = document.createElement("table");
+
+        var para = document.createElement("p");
+        var inhalt = document.createTextNode('123123123');
+
+
+
+        var myCars=JSON.parse(localStorage.getItem("911"));
+        console.log(myCars);
+
+        // var col = [];
+        // for (var i = 0; i < myCars.length; i++) {
+        //     for (var key in myCars[i]) {
+        //         if (col.indexOf(key) === -1) {
+        //             col.push(key);
+        //         }
+        //     }
+        // }
+        //
+        // var tr = table.insertRow(-1);
+        //
+        // for (var i = 0; i < col.length; i++) {
+        //     var th = document.createElement("th");
+        //     th.innerHTML = col[i];
+        //     tr.appendChild(th);
+        // }
+        //
+        // for (var i = 0; i < myCars.length; i++) {
+        //
+        //     tr = table.insertRow(-1);
+        //
+        //     for (var j = 0; j < col.length; j++) {
+        //         var tabCell = tr.insertCell(-1);
+        //         tabCell.innerHTML = myCars[i][col[j]];
+        //     }
+        // }
+
+        para.appendChild(inhalt);
+        table.appendChild(para);
+        li.appendChild(table);
+        liste.appendChild(li);
+        document.body.appendChild(liste);
+        }
+
+
         garagePage.querySelector('.localstorageloeschen').addEventListener('click', () => {
           console.log("ALLES LÖSCHEN!!");
           localStorage.clear();
+          // document.body.removechild(liste);
+
         });
 
 
