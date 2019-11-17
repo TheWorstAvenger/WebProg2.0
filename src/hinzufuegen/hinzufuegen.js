@@ -58,7 +58,8 @@ class HinzufuegenPage {
                 'leistung': document.getElementById('ps').value,
                 'nm': document.getElementById('nm').value,
                 'hubraum': document.getElementById('hr').value,
-                'beschreibung': document.getElementById('beschreibung').value
+                'beschreibung': document.getElementById('beschreibung').value,
+                'isFavorite': false
               };
 
               switch (modellText) {
