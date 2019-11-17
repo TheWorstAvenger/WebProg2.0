@@ -2,7 +2,7 @@
 <h1 class="h1hinzufuegen">Auto hinzufügen</h1>
 <br />
     <label>Modell:
-        <select id="modell" name="modell">
+        <select class="drop" id="modell" name="modell">
             <option>-----</option>
             <option>911</option>
             <option>718</option>
@@ -12,21 +12,21 @@
         </select>
     </label>
     <label>Baureihe:
-        <select id="baureihe" name="baureihe">
+        <select class="drop" id="baureihe" name="baureihe">
             <option>-----</option>
         </select>
     </label>
     <label>Variante:
-        <select id="variante" name="variante">
+        <select class="drop" id="variante" name="variante">
             <option>-----</option>
         </select>
     </label>
     <br />
     <br />
-    <label>Baujahr: <input type="date" min="1900-01-01" max="2200-12-31" value="2018-07-22" id="bj" name="bj"></label>
+    <label>Baujahr: <input class="datumfeld" type="date" min="1900-01-01" max="2200-12-31" value="2018-07-22" id="bj" name="bj"></label>
         <p>Geben Sie Karosserieform an:</p>
         <fieldset id="karosserieform">
-            <input type="radio" id="coupe" name="karosserieform" value="Coupe" checked>
+            <input class="radiobutton" type="radio" id="coupe" name="karosserieform" value="Coupe" checked>
             <label for="coupe"> Coupe</label>
             <input type="radio" id="cabrio" name="karosserieform" value="Cabrio">
             <label for="cabrio"> Cabrio</label>
@@ -38,11 +38,11 @@
     <br />
     <br />
     <br />
-    <label>Leistung in PS: <input type="number" id="ps" name="ps"></label>
-    <label>Nm: <input type="number" min="0" id="nm" name="nm"></label>
-    <label>Hubraum in cm³: <input type="number" min="0" id="hr" name="hr"></label>
+    <label>Leistung in PS: <input class="datenFahrzeug" type="number" id="ps" name="ps"></label>
+    <label>Nm: <input class="datenFahrzeug" type="number" min="0" id="nm" name="nm"></label>
+    <label>Hubraum in cm³: <input class="datenFahrzeug" type="number" min="0" id="hr" name="hr"></label>
     <br />
-    <label>Beschreibung: <textarea id="beschreibung" name="beschreibung"></textarea></label>
+    <label>Beschreibung: <textarea class="textfeld" id="beschreibung" name="beschreibung"></textarea></label>
     <br />
     <br />
   <button class="klickMich">Auto hinzufügen</button>

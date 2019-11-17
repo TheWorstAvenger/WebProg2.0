@@ -1,13 +1,54 @@
 button.klickMich {
     color: black;
-    background-color: grey;
+    background-color: #848484;
     border-radius: 20px;
     font-size: 25px;
     border: none;
+}
+button.klickMich:hover {
+    background-color: #d5001c;
 }
 h1.h1hinzufuegen {
     text-align: center;
 }
 section.mbv {
-    text-align: center; 
+    text-align: center;
+}
+select.drop {
+    border-radius: 10px;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border:none;
+  border-radius: 0;
+  font-size: 1em;
+
+  width:100%;
+  padding:.75em 1em .5em 1em;
+  box-shadow: 0 2px 1px 0 rgba(0,0,0,0.2);
+  background-color:white;
+  background-position: right;
+  background-repeat: no-repeat;
+  padding:.75em 1em .5em 1em;
+  box-shadow: 0 2px 1px 0 rgba(0,0,0,1);
+  background-color:white;
+  color:black;
+  border-radius: 8px;
+}
+
+option {
+  background:#white;
+  border-top:1px solid #444;
+  padding:.3em 1em .3em 1em;
+}
+
+.datenFahrzeug {
+    border-radius: 8px;
+    background: white;
+}
+.textfeld {
+    border-radius: 8px;
 }
