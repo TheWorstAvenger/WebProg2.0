@@ -1,5 +1,5 @@
 "use strict";
-
+import "./hinzufuegen.css";
 class HinzufuegenPage {
 
     constructor(app){

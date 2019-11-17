@@ -17,17 +17,29 @@ body {
     font-family: 'Roboto', sans-serif;
     font-size: 12pt;
 
-    background-color: rgb(212, 227, 237);
+    background-color: #DCDCDC;
 }
 
 .hidden {
     display: none;
 }
 
-.navbar.navbar-expand-sm.bg-dark li a{
+.navbar.navbar-expand-sm.bg-dark li a {
     color: gold;
 }
 
-.navbar-brand{
-  color: red;
+.navbar-brand {
+  color: #d5001c;
+}
+.navbar-brand:hover {
+    color: gold;
+}
+.nav-link:hover {
+    border-bottom: 0.075em solid #E75908;
+    background-color: black;
+}
+
+section header nav ul li a {
+    transition: background 0.2s;
+    -webkit-transition: background 0.2s;
 }
