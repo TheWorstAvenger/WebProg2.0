@@ -20,6 +20,7 @@ body {
     background-color: #DCDCDC;
 }
 
+
 .hidden {
     display: none;
 }
@@ -37,6 +38,9 @@ body {
 .nav-link:hover {
     border-bottom: 0.075em solid #E75908;
     background-color: black;
+}
+.navbar-nav{
+    text-align: center;
 }
 
 section header nav ul li a {

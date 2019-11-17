@@ -1,3 +1,13 @@
-h1 {
+button.klickMich {
+    color: black;
+    background-color: grey;
+    border-radius: 20px;
+    font-size: 25px;
+    border: none;
+}
+h1.h1hinzufuegen {
     text-align: center;
+}
+section.mbv {
+    text-align: center; 
 }

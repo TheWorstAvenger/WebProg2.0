@@ -1,7 +1,8 @@
-<section>
-<h1>Auto hinzufügen</h1>
-  <label>Modell:
-      <select id="modell" name="modell">
+<section class="mbv">
+<h1 class="h1hinzufuegen">Auto hinzufügen</h1>
+<br />
+    <label>Modell:
+        <select id="modell" name="modell">
             <option>-----</option>
             <option>911</option>
             <option>718</option>
@@ -20,6 +21,8 @@
             <option>-----</option>
         </select>
     </label>
+    <br />
+    <br />
     <label>Baujahr: <input type="date" min="1900-01-01" max="2200-12-31" value="2018-07-22" id="bj" name="bj"></label>
         <p>Geben Sie Karosserieform an:</p>
         <fieldset id="karosserieform">
@@ -32,10 +35,16 @@
             <input type="radio" id="limousine" name="karosserieform" value="Limousine" checked>
             <label for="limousine"> Limousine</label>
         </fieldset>
+    <br />
+    <br />
+    <br />
     <label>Leistung in PS: <input type="number" id="ps" name="ps"></label>
     <label>Nm: <input type="number" min="0" id="nm" name="nm"></label>
     <label>Hubraum in cm³: <input type="number" min="0" id="hr" name="hr"></label>
+    <br />
     <label>Beschreibung: <textarea id="beschreibung" name="beschreibung"></textarea></label>
-  <button class="klickMich">Klick mich</button>
+    <br />
+    <br />
+  <button class="klickMich">Auto hinzufügen</button>
 
 </section>
