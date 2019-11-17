@@ -16,15 +16,21 @@ class GaragePage {
         let carCount911 = JSON.parse(localStorage.getItem("911")).length;
         console.log("911: "+carCount911);
 
-        var tbody = document.querySelector("#autoliste ul");
-        var temp = document.querySelector("#neuesAuto");
+        // var tbody = document.querySelector("#autoliste ul");
+        // var temp = document.querySelector("#neuesAuto");
+        //
+        // if('content' in document.createElement('template')&&tbody&&temp){
+        //   tbody.innerHTML="";
+        //
+        //   tr = document.importNode(temp.content, true);
+        //   tbody.(tr);
+        // }
 
-        if('content' in document.createElement('template')&&tbody&&temp){
-          tbody.innerHTML="";
-
-          tr = document.importNode(temp.content, true);
-          tbody.appendChild(tr);
-        }
+        var neuesAuto = document.createElement("LI")
+        neuesAuto.id =  'neuesAuto';
+        var auto = document.getElementById("neuesAuto");
+        var clon = auto.content.cloneNode(true);
+        document.ul.appendChild(clon);
 
 
 
