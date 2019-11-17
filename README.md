@@ -1,3 +1,3 @@
-#Die Porsche Garage
+# Die Porsche Garage
 
 Die Anwendung ist ein Tool für Autoliebhaber. Die Anwendung besitzt einen Tab zur Übersicht der favorisierten Porsche Modelle. Zu Beginn ist diese Seite natürlich leer, deshalb kann der Anwender über den Punkt "Auto Hinzufügen" einen Wagen konfigurieren und ein genaues Modell mit spezifischen Attributen und Leistungen zu seiner persönlichen Garage hinzufügen. In dieser ist es möglich, aus allen hinzugefügten Modellen, seine Favoriten zu wählen, die auf der Startseite präsentiert werden, um auf einen Blick gewünschte Modelle miteinander Vergleichen zu können und einen Überblick über die geliebten Porsche Wagen zu haben. In der Garage ist es möglich die hinzugefügten Porsche Modelle beispielsweise nach Leistung sortiert anzeigen zu lassen. Über einen Knopf kann auch die gesamte Garage geleert werden.
