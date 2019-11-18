@@ -28,7 +28,7 @@ class GaragePage {
           table = garagePage.querySelector('#body911');
           //alles raus bis auf die Überschriften
           this.tabelleLeerenAußerUeberschrift(table);
-          this.tabelleMitDatenFüllen(table, data911String);
+          this.tabelleMitDatenFuellen(table, data911String);
         }
 
         if(data718 != null){
@@ -37,7 +37,7 @@ class GaragePage {
           table = garagePage.querySelector('#body718');
           //alles raus bis auf die Überschriften
           this.tabelleLeerenAußerUeberschrift(table);
-          this.tabelleMitDatenFüllen(table, data718String);
+          this.tabelleMitDatenFuellen(table, data718String);
         }
 
         if(dataCayenne != null){
@@ -46,7 +46,7 @@ class GaragePage {
           table = garagePage.querySelector('#bodyCayenne');
           //alles raus bis auf die Überschriften
           this.tabelleLeerenAußerUeberschrift(table);
-          this.tabelleMitDatenFüllen(table, dataCayenneString);
+          this.tabelleMitDatenFuellen(table, dataCayenneString);
         }
 
         if(dataPanamera != null){
@@ -55,7 +55,8 @@ class GaragePage {
           table = garagePage.querySelector('#bodyPanamera');
           //alles raus bis auf die Überschriften
           this.tabelleLeerenAußerUeberschrift(table);
-          this.tabelleMitDatenFüllen(table, dataPanameraString);
+          this.tabelleMitDatenFuellen(table, dataPanameraString);
+
         }
 
         if(dataMacan != null){
@@ -64,7 +65,7 @@ class GaragePage {
           table = garagePage.querySelector('#bodyMacan');
           //alles raus bis auf die Überschriften
           this.tabelleLeerenAußerUeberschrift(table);
-          this.tabelleMitDatenFüllen(table, dataMacanString);
+          this.tabelleMitDatenFuellen(table, dataMacanString);
         }
 
 
@@ -112,7 +113,8 @@ class GaragePage {
       }
     }
 
-    tabelleMitDatenFüllen(table, daten){
+    tabelleMitDatenFuellen(table, daten){
+      var count = 0;
       //iterate over every array(row) within daten
       for (let row of daten) {
       //Insert a new row element into the table element
@@ -124,9 +126,20 @@ class GaragePage {
           let newCell = table.rows[table.rows.length - 1].insertCell();
       //add text to the created cell element
           newCell.textContent = cell;
+          count++;
+          if(count == 10){
+            newCell.id = "fav";
+            newCell.innerHTML = "";
+            var checkbox = document.createElement('input');
+                  checkbox.type = "checkbox";
+            newCell.appendChild(checkbox);
+            count = 0;
+          }
+
         }
       }
     }
+
 }
 
 export default GaragePage;
