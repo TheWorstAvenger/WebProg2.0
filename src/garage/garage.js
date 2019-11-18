@@ -127,8 +127,8 @@ class GaragePage {
       //add text to the created cell element
           newCell.textContent = cell;
           count++;
-          if(count == 10){
-            newCell.id = "fav";
+          if(count == 10){ //<-- 10. Feld einer Zeile == FAVORITE
+            newCell.className = "fav";
             newCell.innerHTML = "";
             var checkbox = document.createElement('input');
                   checkbox.type = "checkbox";
