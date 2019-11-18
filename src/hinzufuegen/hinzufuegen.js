@@ -50,10 +50,10 @@ class HinzufuegenPage {
 
             if(modellText != "-----"){
               var newCar = {
-                'id': 0,
+                'id': 1,
                 'modell': modellText,
                 'baureihe': baureiheText,
-                'varante': varianteText,
+                'variante': varianteText,
                 'karosserieform': $('input[name="karosserieform"]:checked').index()/2,
                 'leistung': document.getElementById('ps').value,
                 'nm': document.getElementById('nm').value,

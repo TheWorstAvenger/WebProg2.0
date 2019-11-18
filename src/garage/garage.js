@@ -11,70 +11,154 @@ class GaragePage {
     async onShow() {
         let garagePage = await this._importStartPageHtml();
 
-        let carCount = localStorage.length;
-        console.log(carCount);
-        let carCount911 = JSON.parse(localStorage.getItem("911")).length;
-        console.log("911: "+carCount911);
+        var data911=JSON.parse(localStorage.getItem("911"));
+        var data718=JSON.parse(localStorage.getItem("718"));
+        var dataCayenne=JSON.parse(localStorage.getItem("cayenne"));
+        var dataMacan=JSON.parse(localStorage.getItem("macan"));
+        var dataPanamera=JSON.parse(localStorage.getItem("panamera"));
 
-        // for (var i = 0; i < carCount911.length; i++) {
+        var data911String = [];
+        var data718String = [];
+        var dataCayenneString = [];
+        var dataPanameraString = [];
+        var dataMacanString = [];
+        let table;
 
+        if(data911 != null){
+          for(var auto in data911)
+          data911String.push(Object.values(data911[auto]));
 
+          //Tabelle abholen
+          table = garagePage.querySelector('#liste911');
+          //alles raus bis auf die Überschriften
+           for(var i =table.rows.length - 1; i > 1 ; i--)
+          {
+               table.deleteRow(i);
+           }
+          //iterate over every array(row) within data911String
+          for (let row of data911String) {
+          //Insert a new row element into the table element
+            table.insertRow();
+          //Iterate over every index(cell) in each array(row)
+            for (let cell of row) {
+          //While iterating over the index(cell)
+          //insert a cell into the table element
+              let newCell = table.rows[table.rows.length - 1].insertCell();
+          //add text to the created cell element
+              newCell.textContent = cell;
+            }
+          }
+        }
 
-        // var liste = document.createElement("ul");
-        // var li = document.createElement("li");
-        // var table = document.createElement("table");
+        if(data718 != null){
+          for(var auto in data718)
+          data718String.push(Object.values(data718[auto]));
 
+          //Tabelle abholen
+          table = garagePage.querySelector('#liste718');
+          //alles raus bis auf die Überschriften
+           for(var i =table.rows.length - 1; i > 1 ; i--)
+          {
+               table.deleteRow(i);
+           }
+          //iterate over every array(row) within data911String
+          for (let row of data718String) {
+          //Insert a new row element into the table element
+            table.insertRow();
+          //Iterate over every index(cell) in each array(row)
+            for (let cell of row) {
+          //While iterating over the index(cell)
+          //insert a cell into the table element
+              let newCell = table.rows[table.rows.length - 1].insertCell();
+          //add text to the created cell element
+              newCell.textContent = cell;
+            }
+          }
+        }
 
+        if(dataCayenne != null){
+          for(var auto in dataCayenne)
+          dataCayenneString.push(Object.values(dataCayenne[auto]));
 
+          //Tabelle abholen
+          table = garagePage.querySelector('#listeCayenne');
+          //alles raus bis auf die Überschriften
+           for(var i =table.rows.length - 1; i > 1 ; i--)
+          {
+               table.deleteRow(i);
+           }
+          //iterate over every array(row) within data911String
+          for (let row of dataCayenneString) {
+          //Insert a new row element into the table element
+            table.insertRow();
+          //Iterate over every index(cell) in each array(row)
+            for (let cell of row) {
+          //While iterating over the index(cell)
+          //insert a cell into the table element
+              let newCell = table.rows[table.rows.length - 1].insertCell();
+          //add text to the created cell element
+              newCell.textContent = cell;
+            }
+          }
+        }
 
-        var myCars=JSON.parse(localStorage.getItem("911"));
-        console.log(myCars);
-        let erstes = JSON.parse(localStorage.getItem("911"));
-        // let okay = JSON.parse(erstes.getItem());
-        console.log("erstes"+erstes);
-        var inhalt = document.createTextNode(erstes[0].stringify);
-        var auto = document.createElement("p");
-        auto.appendChild(inhalt);
+        if(dataPanamera != null){
+          for(var auto in dataPanamera)
+          dataPanameraString.push(Object.values(dataPanamera[auto]));
 
-        document.body.appendChild(inhalt);
-        // var col = [];
-        // for (var i = 0; i < myCars.length; i++) {
-        //     for (var key in myCars[i]) {
-        //         if (col.indexOf(key) === -1) {
-        //             col.push(key);
-        //         }
-        //     }
-        // }
-        //
-        // var tr = table.insertRow(-1);
-        //
-        // for (var i = 0; i < col.length; i++) {
-        //     var th = document.createElement("th");
-        //     th.innerHTML = col[i];
-        //     tr.appendChild(th);
-        // }
-        //
-        // for (var i = 0; i < myCars.length; i++) {
-        //
-        //     tr = table.insertRow(-1);
-        //
-        //     for (var j = 0; j < col.length; j++) {
-        //         var tabCell = tr.insertCell(-1);
-        //         tabCell.innerHTML = myCars[i][col[j]];
-        //     }
-        // }
+          //Tabelle abholen
+          table = garagePage.querySelector('#listePanamera');
+          //alles raus bis auf die Überschriften
+           for(var i =table.rows.length - 1; i > 1 ; i--)
+          {
+               table.deleteRow(i);
+           }
+          //iterate over every array(row) within data911String
+          for (let row of dataPanameraString) {
+          //Insert a new row element into the table element
+            table.insertRow();
+          //Iterate over every index(cell) in each array(row)
+            for (let cell of row) {
+          //While iterating over the index(cell)
+          //insert a cell into the table element
+              let newCell = table.rows[table.rows.length - 1].insertCell();
+          //add text to the created cell element
+              newCell.textContent = cell;
+            }
+          }
+        }
 
-        // para.appendChild(inhalt);
-        // table.appendChild(para);
-        // li.appendChild(table);
-        // liste.appendChild(li);
-        // document.body.appendChild(liste);
-        // }
+        if(dataMacan != null){
+          for(var auto in dataMacan)
+          dataMacanString.push(Object.values(dataMacan[auto]));
+
+          //Tabelle abholen
+          table = garagePage.querySelector('#listeMacan');
+          //alles raus bis auf die Überschriften
+           for(var i =table.rows.length - 1; i > 1 ; i--)
+          {
+               table.deleteRow(i);
+           }
+          //iterate over every array(row) within data911String
+          for (let row of dataMacanString) {
+          //Insert a new row element into the table element
+            table.insertRow();
+          //Iterate over every index(cell) in each array(row)
+            for (let cell of row) {
+          //While iterating over the index(cell)
+          //insert a cell into the table element
+              let newCell = table.rows[table.rows.length - 1].insertCell();
+          //add text to the created cell element
+              newCell.textContent = cell;
+            }
+          }
+        }
 
 
         garagePage.querySelector('.localstorageloeschen').addEventListener('click', () => {
           console.log("ALLES LÖSCHEN!!");
           localStorage.clear();
+          location.reload();
         });
 
 
