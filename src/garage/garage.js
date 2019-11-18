@@ -17,114 +17,54 @@ class GaragePage {
         var dataMacan=JSON.parse(localStorage.getItem("macan"));
         var dataPanamera=JSON.parse(localStorage.getItem("panamera"));
 
-        var data911String = this.obejecArrayzuArray(data911);
-        var data718String = this.obejecArrayzuArray(data718);
-        var dataCayenneString = this.obejecArrayzuArray(dataCayenne);
-        var dataPanameraString = this.obejecArrayzuArray(dataPanamera);
-        var dataMacanString = this.obejecArrayzuArray(dataMacan);
         let table;
 
         var test=this.obejecArrayzuArray(data911);
         console.log(test);
 
         if(data911 != null){
+          var data911String = this.obejecArrayzuArray(data911);
           //Tabelle abholen
           table = garagePage.querySelector('#body911');
           //alles raus bis auf die Überschriften
           this.tabelleLeerenAußerUeberschrift(table);
-          //iterate over every array(row) within data911String
-          for (let row of data911String) {
-          //Insert a new row element into the table element
-            table.insertRow();
-          //Iterate over every index(cell) in each array(row)
-            for (let cell of row) {
-          //While iterating over the index(cell)
-          //insert a cell into the table element
-              let newCell = table.rows[table.rows.length - 1].insertCell();
-          //add text to the created cell element
-              newCell.textContent = cell;
-            }
-          }
+          this.tabelleMitDatenFüllen(table, data911String);
         }
 
         if(data718 != null){
+          var data718String = this.obejecArrayzuArray(data718);
           //Tabelle abholen
           table = garagePage.querySelector('#body718');
           //alles raus bis auf die Überschriften
           this.tabelleLeerenAußerUeberschrift(table);
-          //iterate over every array(row) within data911String
-          for (let row of data718String) {
-          //Insert a new row element into the table element
-            table.insertRow();
-          //Iterate over every index(cell) in each array(row)
-            for (let cell of row) {
-          //While iterating over the index(cell)
-          //insert a cell into the table element
-              let newCell = table.rows[table.rows.length - 1].insertCell();
-          //add text to the created cell element
-              newCell.textContent = cell;
-            }
-          }
+          this.tabelleMitDatenFüllen(table, data718String);
         }
 
         if(dataCayenne != null){
+          var dataCayenneString = this.obejecArrayzuArray(dataCayenne);
           //Tabelle abholen
           table = garagePage.querySelector('#bodyCayenne');
           //alles raus bis auf die Überschriften
           this.tabelleLeerenAußerUeberschrift(table);
-          //iterate over every array(row) within data911String
-          for (let row of dataCayenneString) {
-          //Insert a new row element into the table element
-            table.insertRow();
-          //Iterate over every index(cell) in each array(row)
-            for (let cell of row) {
-          //While iterating over the index(cell)
-          //insert a cell into the table element
-              let newCell = table.rows[table.rows.length - 1].insertCell();
-          //add text to the created cell element
-              newCell.textContent = cell;
-            }
-          }
+          this.tabelleMitDatenFüllen(table, dataCayenneString);
         }
 
         if(dataPanamera != null){
+          var dataPanameraString = this.obejecArrayzuArray(dataPanamera);
           //Tabelle abholen
           table = garagePage.querySelector('#bodyPanamera');
           //alles raus bis auf die Überschriften
           this.tabelleLeerenAußerUeberschrift(table);
-          //iterate over every array(row) within data911String
-          for (let row of dataPanameraString) {
-          //Insert a new row element into the table element
-            table.insertRow();
-          //Iterate over every index(cell) in each array(row)
-            for (let cell of row) {
-          //While iterating over the index(cell)
-          //insert a cell into the table element
-              let newCell = table.rows[table.rows.length - 1].insertCell();
-          //add text to the created cell element
-              newCell.textContent = cell;
-            }
-          }
+          this.tabelleMitDatenFüllen(table, dataPanameraString);
         }
 
         if(dataMacan != null){
+          var dataMacanString = this.obejecArrayzuArray(dataMacan);
           //Tabelle abholen
           table = garagePage.querySelector('#bodyMacan');
           //alles raus bis auf die Überschriften
           this.tabelleLeerenAußerUeberschrift(table);
-          //iterate over every array(row) within data911String
-          for (let row of dataMacanString) {
-          //Insert a new row element into the table element
-            table.insertRow();
-          //Iterate over every index(cell) in each array(row)
-            for (let cell of row) {
-          //While iterating over the index(cell)
-          //insert a cell into the table element
-              let newCell = table.rows[table.rows.length - 1].insertCell();
-          //add text to the created cell element
-              newCell.textContent = cell;
-            }
-          }
+          this.tabelleMitDatenFüllen(table, dataMacanString);
         }
 
 
@@ -169,6 +109,22 @@ class GaragePage {
       for(var i =table.rows.length - 1; i > 1 ; i--)
      {
           table.deleteRow(i);
+      }
+    }
+
+    tabelleMitDatenFüllen(table, daten){
+      //iterate over every array(row) within daten
+      for (let row of daten) {
+      //Insert a new row element into the table element
+        table.insertRow();
+      //Iterate over every index(cell) in each array(row)
+        for (let cell of row) {
+      //While iterating over the index(cell)
+      //insert a cell into the table element
+          let newCell = table.rows[table.rows.length - 1].insertCell();
+      //add text to the created cell element
+          newCell.textContent = cell;
+        }
       }
     }
 }

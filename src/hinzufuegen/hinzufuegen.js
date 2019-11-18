@@ -27,11 +27,11 @@ class HinzufuegenPage {
           dataMacan=[];
 
 
-        var idCounter911 = data911.length;
-        var idCounter718 = data718.length;
-        var idCounterCayenne = dataCayenne.length;
-        var idCounterMacan = dataMacan.length;
-        var idCounterPanamera = dataPanamera.length;
+        var idCounter911 = data911.length+1;
+        var idCounter718 = data718.length+1;
+        var idCounterCayenne = dataCayenne.length+1;
+        var idCounterMacan = dataMacan.length+1;
+        var idCounterPanamera = dataPanamera.length+1;
 
 
 
