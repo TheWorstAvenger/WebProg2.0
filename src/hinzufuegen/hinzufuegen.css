@@ -52,3 +52,12 @@ option {
 .textfeld {
     border-radius: 8px;
 }
+.radiobutton label {
+    display: inline-block;
+    text-align: center;
+    margin: 0 0.2em;
+}
+.radiobutton label input {
+    display: block;
+    margin: 0.5em auto;
+}
