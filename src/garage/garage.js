@@ -17,24 +17,21 @@ class GaragePage {
         var dataMacan=JSON.parse(localStorage.getItem("macan"));
         var dataPanamera=JSON.parse(localStorage.getItem("panamera"));
 
-        var data911String = [];
-        var data718String = [];
-        var dataCayenneString = [];
-        var dataPanameraString = [];
-        var dataMacanString = [];
+        var data911String = this.obejecArrayzuArray(data911);
+        var data718String = this.obejecArrayzuArray(data718);
+        var dataCayenneString = this.obejecArrayzuArray(dataCayenne);
+        var dataPanameraString = this.obejecArrayzuArray(dataPanamera);
+        var dataMacanString = this.obejecArrayzuArray(dataMacan);
         let table;
 
-        if(data911 != null){
-          for(var auto in data911)
-          data911String.push(Object.values(data911[auto]));
+        var test=this.obejecArrayzuArray(data911);
+        console.log(test);
 
+        if(data911 != null){
           //Tabelle abholen
-          table = garagePage.querySelector('#liste911');
+          table = garagePage.querySelector('#body911');
           //alles raus bis auf die Überschriften
-           for(var i =table.rows.length - 1; i > 1 ; i--)
-          {
-               table.deleteRow(i);
-           }
+          this.tabelleLeerenAußerUeberschrift(table);
           //iterate over every array(row) within data911String
           for (let row of data911String) {
           //Insert a new row element into the table element
@@ -51,16 +48,10 @@ class GaragePage {
         }
 
         if(data718 != null){
-          for(var auto in data718)
-          data718String.push(Object.values(data718[auto]));
-
           //Tabelle abholen
-          table = garagePage.querySelector('#liste718');
+          table = garagePage.querySelector('#body718');
           //alles raus bis auf die Überschriften
-           for(var i =table.rows.length - 1; i > 1 ; i--)
-          {
-               table.deleteRow(i);
-           }
+          this.tabelleLeerenAußerUeberschrift(table);
           //iterate over every array(row) within data911String
           for (let row of data718String) {
           //Insert a new row element into the table element
@@ -77,16 +68,10 @@ class GaragePage {
         }
 
         if(dataCayenne != null){
-          for(var auto in dataCayenne)
-          dataCayenneString.push(Object.values(dataCayenne[auto]));
-
           //Tabelle abholen
-          table = garagePage.querySelector('#listeCayenne');
+          table = garagePage.querySelector('#bodyCayenne');
           //alles raus bis auf die Überschriften
-           for(var i =table.rows.length - 1; i > 1 ; i--)
-          {
-               table.deleteRow(i);
-           }
+          this.tabelleLeerenAußerUeberschrift(table);
           //iterate over every array(row) within data911String
           for (let row of dataCayenneString) {
           //Insert a new row element into the table element
@@ -103,16 +88,10 @@ class GaragePage {
         }
 
         if(dataPanamera != null){
-          for(var auto in dataPanamera)
-          dataPanameraString.push(Object.values(dataPanamera[auto]));
-
           //Tabelle abholen
-          table = garagePage.querySelector('#listePanamera');
+          table = garagePage.querySelector('#bodyPanamera');
           //alles raus bis auf die Überschriften
-           for(var i =table.rows.length - 1; i > 1 ; i--)
-          {
-               table.deleteRow(i);
-           }
+          this.tabelleLeerenAußerUeberschrift(table);
           //iterate over every array(row) within data911String
           for (let row of dataPanameraString) {
           //Insert a new row element into the table element
@@ -129,16 +108,10 @@ class GaragePage {
         }
 
         if(dataMacan != null){
-          for(var auto in dataMacan)
-          dataMacanString.push(Object.values(dataMacan[auto]));
-
           //Tabelle abholen
-          table = garagePage.querySelector('#listeMacan');
+          table = garagePage.querySelector('#bodyMacan');
           //alles raus bis auf die Überschriften
-           for(var i =table.rows.length - 1; i > 1 ; i--)
-          {
-               table.deleteRow(i);
-           }
+          this.tabelleLeerenAußerUeberschrift(table);
           //iterate over every array(row) within data911String
           for (let row of dataMacanString) {
           //Insert a new row element into the table element
@@ -183,6 +156,20 @@ class GaragePage {
 
     get title() {
         return "Garage";
+    }
+
+    obejecArrayzuArray(objectArray){
+      var dataString = [];
+      for(var auto in objectArray)
+      dataString.push(Object.values(objectArray[auto]));
+      return dataString;
+    }
+
+    tabelleLeerenAußerUeberschrift(table){
+      for(var i =table.rows.length - 1; i > 1 ; i--)
+     {
+          table.deleteRow(i);
+      }
     }
 }
 
