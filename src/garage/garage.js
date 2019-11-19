@@ -18,16 +18,26 @@ class GaragePage {
         var dataPanamera=JSON.parse(localStorage.getItem("panamera"));
         var dataGesamt = [];
 
-        let table;
-        let listeGesamt = garagePage.querySelector('#listeGesamt');
-        let listenEinzeln =  garagePage.querySelector('#listenEinzeln');
-
         Array.prototype.push.apply(dataGesamt,data911);
         Array.prototype.push.apply(dataGesamt,data718);
         Array.prototype.push.apply(dataGesamt,dataCayenne);
         Array.prototype.push.apply(dataGesamt,dataMacan);
         Array.prototype.push.apply(dataGesamt,dataPanamera);
         console.log(dataGesamt);
+
+        var table;
+        var tb911 = garagePage.querySelector('#body911');
+        var tb718 = garagePage.querySelector('#body718');
+        var tbCayenne = garagePage.querySelector('#bodyCayenne');
+        var tbMacan = garagePage.querySelector('#bodyPanamera');
+        var tbPanamera = garagePage.querySelector('#bodyMacan')
+        var tbGesamt = garagePage.querySelector('#bodyGesamt');
+
+        var tbs = [tb911, tb718, tbCayenne, tbMacan, tbPanamera, tbGesamt];
+
+        let listeGesamt = garagePage.querySelector('#listeGesamt');
+        let listenEinzeln =  garagePage.querySelector('#listenEinzeln');
+
 
         if(data911 != null){
           var data911String = this.obejecArrayzuArray(data911);
@@ -85,7 +95,11 @@ class GaragePage {
         garagePage.querySelector('.localstorageloeschen').addEventListener('click', () => {
           console.log("ALLES LÖSCHEN!!");
           localStorage.clear();
-          location.reload();
+          for(var tb of tbs){
+            tb.style.display = "none";
+          }
+
+
         });
 
         garagePage.querySelector('.nuranzeigen').addEventListener('change', function(event) {
