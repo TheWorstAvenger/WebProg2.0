@@ -28,3 +28,15 @@ label{
 #alleweg{
   float:right;
 }
+.table-light{
+  display:run-in;
+}
+h3{
+  display:run-in;
+}
+.alleInEiner{
+  display:run-in;
+}
+#alleInEinerListe{
+  visibility:hidden;
+}

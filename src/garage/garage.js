@@ -17,10 +17,41 @@ class GaragePage {
         var dataMacan=JSON.parse(localStorage.getItem("macan"));
         var dataPanamera=JSON.parse(localStorage.getItem("panamera"));
 
+        garagePage.querySelector('#nuranzeigen').addEventListener('change', function(event){
+          var olla = document.getElementById('nuranzeigen');
+          var modellIndex = olla.selectedIndex;
+          var dropdownanzeige = olla.options[modellIndex].text
+          switch (dropdownanzeige) {
+            case "Modell":
+              console.log("Modell");
+              location.reload();
+              break;
+            case "Alle":
+              console.log("Alle");
+              var ok = document.getElementsByClassName('alleInEiner');
+              for(var i=0;i<ok.length;i++){
+                ok[i].style.display="none";
+              }
+              var grosseTabelle = document.getElementById('alleInEinerListe');
+              grosseTabelle.style.visibility="visible";
+              break;
+            default:
+            console.log(dropdownanzeige);
+
+          }
+        });
+
+
         let table;
+        let tableAll1;
+        let tableAll2;
+        let tableAll3;
+        let tableAll4;
+        let tableAll5;
 
         var test=this.obejecArrayzuArray(data911);
         console.log(test);
+
 
         if(data911 != null){
           var data911String = this.obejecArrayzuArray(data911);
@@ -29,6 +60,10 @@ class GaragePage {
           //alles raus bis auf die Überschriften
           this.tabelleLeerenAußerUeberschrift(table);
           this.tabelleMitDatenFuellen(table, data911String);
+
+          tableAll1 = garagePage.querySelector('#alleAuflisten1');
+          this.tabelleLeerenAußerUeberschrift(tableAll1);
+          this.tabelleMitDatenFuellen(tableAll1,data911String);
         }
 
         if(data718 != null){
@@ -38,6 +73,10 @@ class GaragePage {
           //alles raus bis auf die Überschriften
           this.tabelleLeerenAußerUeberschrift(table);
           this.tabelleMitDatenFuellen(table, data718String);
+
+          tableAll2 = garagePage.querySelector('#alleAuflisten2');
+          this.tabelleLeerenAußerUeberschrift(tableAll2);
+          this.tabelleMitDatenFuellen(tableAll2,data718String);
         }
 
         if(dataCayenne != null){
@@ -47,6 +86,10 @@ class GaragePage {
           //alles raus bis auf die Überschriften
           this.tabelleLeerenAußerUeberschrift(table);
           this.tabelleMitDatenFuellen(table, dataCayenneString);
+
+          tableAll3 = garagePage.querySelector('#alleAuflisten3');
+          this.tabelleLeerenAußerUeberschrift(tableAll3);
+          this.tabelleMitDatenFuellen(tableAll3,dataCayenneString);
         }
 
         if(dataPanamera != null){
@@ -56,7 +99,9 @@ class GaragePage {
           //alles raus bis auf die Überschriften
           this.tabelleLeerenAußerUeberschrift(table);
           this.tabelleMitDatenFuellen(table, dataPanameraString);
-
+          tableAll4 = garagePage.querySelector('#alleAuflisten4');
+          this.tabelleLeerenAußerUeberschrift(tableAll4);
+          this.tabelleMitDatenFuellen(tableAll4,dataPanameraString);
         }
 
         if(dataMacan != null){
@@ -66,7 +111,17 @@ class GaragePage {
           //alles raus bis auf die Überschriften
           this.tabelleLeerenAußerUeberschrift(table);
           this.tabelleMitDatenFuellen(table, dataMacanString);
+          tableAll5 = garagePage.querySelector('#alleAuflisten5');
+          this.tabelleLeerenAußerUeberschrift(tableAll5);
+          this.tabelleMitDatenFuellen(tableAll5,dataMacanString);
         }
+
+
+
+
+
+
+
 
 
         garagePage.querySelector('.localstorageloeschen').addEventListener('click', () => {
