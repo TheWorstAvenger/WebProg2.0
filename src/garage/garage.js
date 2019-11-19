@@ -78,27 +78,33 @@ class GaragePage {
           this.tabelleMitDatenFuellen(table, dataMacan);
         }
 
-
-
-
         garagePage.querySelector('.localstorageloeschen').addEventListener('click', () => {
           console.log("ALLES LÖSCHEN!!");
           localStorage.clear();
           for(var tb of tbs){
             tb.style.display = "none";
           }
-
-
         });
 
         garagePage.querySelector('.nuranzeigen').addEventListener('change', event => {
+          data911=JSON.parse(localStorage.getItem("911"));
+          data718=JSON.parse(localStorage.getItem("718"));
+          dataCayenne=JSON.parse(localStorage.getItem("cayenne"));
+          dataMacan=JSON.parse(localStorage.getItem("macan"));
+          dataPanamera=JSON.parse(localStorage.getItem("panamera"));
+          dataGesamt = [];
+          Array.prototype.push.apply(dataGesamt,data911);
+          Array.prototype.push.apply(dataGesamt,data718);
+          Array.prototype.push.apply(dataGesamt,dataCayenne);
+          Array.prototype.push.apply(dataGesamt,dataMacan);
+          Array.prototype.push.apply(dataGesamt,dataPanamera);
+
           console.log("nuranzeigen!!");
           var index = event.target.value;
           if(index=="Alle"){
             listenEinzeln.style.display = "none";
 
             table = tbGesamt;
-            console.log(table);
             //alles raus bis auf die Überschriften
             table.innerHTML ="";
             this.tabelleMitDatenFuellen(table, dataGesamt);
@@ -183,13 +189,6 @@ class GaragePage {
       return dataString;
     }
 
-    tabelleLeerenAußerUeberschrift(table){
-      for(var i =table.rows.length - 1; i > 1 ; i--)
-     {
-          table.deleteRow(i);
-      }
-    }
-
     tabelleMitDatenFuellen(table, data){
       var dataString = this.obejecArrayzuArray(data);
       let count = 0;
@@ -212,22 +211,26 @@ class GaragePage {
             if(newCell.innerHTML == "true")
             checkbox.checked = "checked";
             checkbox.name = ""+data[idCount].modell+"-"+data[idCount].id;
+            newCell.innerHTML = "";
+            newCell.className = "fav";
             checkbox.addEventListener("change", function(event){
+              //modell aus tabelle holen
               var modell = event.path[2].cells[1].textContent.toLowerCase();
+              //id aus tabelle holen
               var id = event.path[2].cells[0].textContent;
+              //checkbox an sich holen
               var checkbox = event.path[0];
-              console.log(modell);
+              //daten von dem Modell aus dem Speicher holen
               var autoData = JSON.parse(localStorage.getItem(modell));
               if(checkbox.checked){
                 autoData[id-1].isFavorite = true;
               }else{
                 autoData[id-1].isFavorite = false;
               }
-              localStorage.setItem(modell,  JSON.stringify(autoData));
+              //geupdatete daten in speicher schreiben und alte daten überschreiben
+              localStorage.setItem(modell, JSON.stringify(autoData));
 
             });
-            newCell.className = "fav";
-            newCell.innerHTML = "";
             newCell.appendChild(checkbox);
             count = 0;
           }
