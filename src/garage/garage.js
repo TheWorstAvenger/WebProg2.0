@@ -37,52 +37,48 @@ class GaragePage {
         let listeGesamt = garagePage.querySelector('#listeGesamt');
         let listenEinzeln =  garagePage.querySelector('#listenEinzeln');
 
-
         if(data911 != null){
           //Tabelle abholen
-          table = garagePage.querySelector('#body911');
+          table = tb911;
           //alles raus bis auf die Überschriften
-          this.tabelleLeerenAußerUeberschrift(table);
+          table.innerHTML ="";
           this.tabelleMitDatenFuellen(table, data911);
         }
 
         if(data718 != null){
           //Tabelle abholen
-          table = garagePage.querySelector('#body718');
+          table = tb718;
           //alles raus bis auf die Überschriften
-          this.tabelleLeerenAußerUeberschrift(table);
+          table.innerHTML ="";
           this.tabelleMitDatenFuellen(table, data718);
         }
 
         if(dataCayenne != null){
           //Tabelle abholen
-          table = garagePage.querySelector('#bodyCayenne');
+          table = tbCayenne;
           //alles raus bis auf die Überschriften
-          this.tabelleLeerenAußerUeberschrift(table);
+          table.innerHTML ="";
           this.tabelleMitDatenFuellen(table, dataCayenne);
         }
 
         if(dataPanamera != null){
           //Tabelle abholen
-          table = garagePage.querySelector('#bodyPanamera');
+          table = tbPanamera;
           //alles raus bis auf die Überschriften
-          this.tabelleLeerenAußerUeberschrift(table);
+          table.innerHTML ="";
           this.tabelleMitDatenFuellen(table, dataPanamera);
 
         }
 
         if(dataMacan != null){
           //Tabelle abholen
-          table = garagePage.querySelector('#bodyMacan');
+          table = tbMacan;
           //alles raus bis auf die Überschriften
-          this.tabelleLeerenAußerUeberschrift(table);
+          table.innerHTML ="";
           this.tabelleMitDatenFuellen(table, dataMacan);
         }
 
-        table = garagePage.querySelector('#bodyGesamt');
-        //alles raus bis auf die Überschriften
-        this.tabelleLeerenAußerUeberschrift(table);
-        this.tabelleMitDatenFuellen(table, dataGesamt);
+
 
 
         garagePage.querySelector('.localstorageloeschen').addEventListener('click', () => {
@@ -95,15 +91,63 @@ class GaragePage {
 
         });
 
-        garagePage.querySelector('.nuranzeigen').addEventListener('change', function(event) {
+        garagePage.querySelector('.nuranzeigen').addEventListener('change', event => {
           console.log("nuranzeigen!!");
           var index = event.target.value;
           if(index=="Alle"){
             listenEinzeln.style.display = "none";
+
+            table = tbGesamt;
+            console.log(table);
+            //alles raus bis auf die Überschriften
+            table.innerHTML ="";
+            this.tabelleMitDatenFuellen(table, dataGesamt);
             listeGesamt.style.display = "block";
           }
           if(index=="Modell"){
             listeGesamt.style.display = "none";
+
+            if(data911 != null){
+              //Tabelle abholen
+              table = tb911;
+              //alles raus bis auf die Überschriften
+              table.innerHTML ="";
+              this.tabelleMitDatenFuellen(table, data911);
+            }
+
+            if(data718 != null){
+              //Tabelle abholen
+              table = tb718;
+              //alles raus bis auf die Überschriften
+              table.innerHTML ="";
+              this.tabelleMitDatenFuellen(table, data718);
+            }
+
+            if(dataCayenne != null){
+              //Tabelle abholen
+              table = tbCayenne;
+              //alles raus bis auf die Überschriften
+              table.innerHTML ="";
+              this.tabelleMitDatenFuellen(table, dataCayenne);
+            }
+
+            if(dataPanamera != null){
+              //Tabelle abholen
+              table = tbPanamera;
+              //alles raus bis auf die Überschriften
+              table.innerHTML ="";
+              this.tabelleMitDatenFuellen(table, dataPanamera);
+
+            }
+
+            if(dataMacan != null){
+              //Tabelle abholen
+              table = tbMacan;
+              //alles raus bis auf die Überschriften
+              table.innerHTML ="";
+              this.tabelleMitDatenFuellen(table, dataMacan);
+            }
+
             listenEinzeln.style.display = "block";
           }
       });
