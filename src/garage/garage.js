@@ -23,7 +23,6 @@ class GaragePage {
         Array.prototype.push.apply(dataGesamt,dataCayenne);
         Array.prototype.push.apply(dataGesamt,dataMacan);
         Array.prototype.push.apply(dataGesamt,dataPanamera);
-        console.log(dataGesamt);
 
         var table;
         var tb911 = garagePage.querySelector('#body911');
@@ -40,56 +39,50 @@ class GaragePage {
 
 
         if(data911 != null){
-          var data911String = this.obejecArrayzuArray(data911);
           //Tabelle abholen
           table = garagePage.querySelector('#body911');
           //alles raus bis auf die Überschriften
           this.tabelleLeerenAußerUeberschrift(table);
-          this.tabelleMitDatenFuellen(table, data911String);
+          this.tabelleMitDatenFuellen(table, data911);
         }
 
         if(data718 != null){
-          var data718String = this.obejecArrayzuArray(data718);
           //Tabelle abholen
           table = garagePage.querySelector('#body718');
           //alles raus bis auf die Überschriften
           this.tabelleLeerenAußerUeberschrift(table);
-          this.tabelleMitDatenFuellen(table, data718String);
+          this.tabelleMitDatenFuellen(table, data718);
         }
 
         if(dataCayenne != null){
-          var dataCayenneString = this.obejecArrayzuArray(dataCayenne);
           //Tabelle abholen
           table = garagePage.querySelector('#bodyCayenne');
           //alles raus bis auf die Überschriften
           this.tabelleLeerenAußerUeberschrift(table);
-          this.tabelleMitDatenFuellen(table, dataCayenneString);
+          this.tabelleMitDatenFuellen(table, dataCayenne);
         }
 
         if(dataPanamera != null){
-          var dataPanameraString = this.obejecArrayzuArray(dataPanamera);
           //Tabelle abholen
           table = garagePage.querySelector('#bodyPanamera');
           //alles raus bis auf die Überschriften
           this.tabelleLeerenAußerUeberschrift(table);
-          this.tabelleMitDatenFuellen(table, dataPanameraString);
+          this.tabelleMitDatenFuellen(table, dataPanamera);
 
         }
 
         if(dataMacan != null){
-          var dataMacanString = this.obejecArrayzuArray(dataMacan);
           //Tabelle abholen
           table = garagePage.querySelector('#bodyMacan');
           //alles raus bis auf die Überschriften
           this.tabelleLeerenAußerUeberschrift(table);
-          this.tabelleMitDatenFuellen(table, dataMacanString);
+          this.tabelleMitDatenFuellen(table, dataMacan);
         }
 
-        var dataGesamtString = this.obejecArrayzuArray(dataGesamt);
         table = garagePage.querySelector('#bodyGesamt');
         //alles raus bis auf die Überschriften
         this.tabelleLeerenAußerUeberschrift(table);
-        this.tabelleMitDatenFuellen(table, dataGesamtString);
+        this.tabelleMitDatenFuellen(table, dataGesamt);
 
 
         garagePage.querySelector('.localstorageloeschen').addEventListener('click', () => {
@@ -113,9 +106,7 @@ class GaragePage {
             listeGesamt.style.display = "none";
             listenEinzeln.style.display = "block";
           }
-          console.log(index);
-
-        });
+      });
 
 
 
@@ -155,10 +146,12 @@ class GaragePage {
       }
     }
 
-    tabelleMitDatenFuellen(table, daten){
-      var count = 0;
+    tabelleMitDatenFuellen(table, data){
+      var dataString = this.obejecArrayzuArray(data);
+      let count = 0;
+      var idCount = 0;
       //iterate over every array(row) within daten
-      for (let row of daten) {
+      for (let row of dataString) {
       //Insert a new row element into the table element
         table.insertRow();
       //Iterate over every index(cell) in each array(row)
@@ -170,15 +163,33 @@ class GaragePage {
           newCell.textContent = cell;
           count++;
           if(count == 10){ //<-- 10. Feld einer Zeile == FAVORITE
+            var checkbox = document.createElement('input');
+            checkbox.type = "checkbox";
+            if(newCell.innerHTML == "true")
+            checkbox.checked = "checked";
+            checkbox.name = ""+data[idCount].modell+"-"+data[idCount].id;
+            checkbox.addEventListener("change", function(event){
+              var modell = event.path[2].cells[1].textContent.toLowerCase();
+              var id = event.path[2].cells[0].textContent;
+              var checkbox = event.path[0];
+              console.log(modell);
+              var autoData = JSON.parse(localStorage.getItem(modell));
+              if(checkbox.checked){
+                autoData[id-1].isFavorite = true;
+              }else{
+                autoData[id-1].isFavorite = false;
+              }
+              localStorage.setItem(modell,  JSON.stringify(autoData));
+
+            });
             newCell.className = "fav";
             newCell.innerHTML = "";
-            var checkbox = document.createElement('input');
-                  checkbox.type = "checkbox";
             newCell.appendChild(checkbox);
             count = 0;
           }
 
         }
+        idCount++;
       }
     }
 
