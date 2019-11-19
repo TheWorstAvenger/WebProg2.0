@@ -2,7 +2,7 @@
     <h1>Deine Porsche Garage</h1>
     <label>Auswahl:
     <select class="nuranzeigen" name="nuranzeigen">
-      <option>Nur Favoriten</option>
+      <option>Modell</option>
       <option>Alle</option>
     </select>
     </label>
@@ -19,8 +19,27 @@
   <label id="alleweg">Garage leeren:
     <button class="localstorageloeschen">Liste löschen</button>
   </label>
-<h3>911</h3>
-  <table id=liste911 class="table table-light table-hover">
+<section id="listeGesamt">
+  <h3>GESAMT</h3>
+  <table id="tableGesamt" class="table table-light table-hover">
+    <thead class="thead-dark">
+      <th>ID</th>
+      <th>MODELL</th>
+      <th>BAUREIHE</th>
+      <th>VARIANTE</th>
+      <th>KAROSSERIEFORM</th>
+      <th>LEISTUNG</th>
+      <th>NM</th>
+      <th>HUBRAUM</th>
+      <th>BESCHREIBUNG</th>
+      <th>FAVORITE</th>
+    </thead>
+    <tbody id="bodyGesamt">
+    </tbody>
+</section>
+<section id="listenEinzeln">
+  <h3>911</h3>
+  <table id="liste911" class="table table-light table-hover">
     <thead class="thead-dark">
       <th>ID</th>
       <th>MODELL</th>
@@ -36,7 +55,7 @@
     <tbody id="body911">
     </tbody>
   </table>
-<h3>718</h3>
+  <h3>718</h3>
   <table id="liste718" class="table table-light table-hover">
     <thead class="thead-dark">
       <th>ID</th>
@@ -53,7 +72,7 @@
     <tbody id="body718">
     </tbody>
   </table>
-<h3>Cayenne</h3>
+  <h3>Cayenne</h3>
   <table id="listeCayenne" class="table table-light  table-hover">
     <thead class="thead-dark">
       <th>ID</th>
@@ -70,7 +89,7 @@
     <tbody id="bodyCayenne">
     </tbody>
   </table>
-<h3>Macan</h3>
+  <h3>Macan</h3>
   <table id="listeMacan" class="table table-light  table-hover">
     <thead class="thead-dark">
       <th>ID</th>
@@ -87,7 +106,7 @@
     <tbody id="bodyMacan">
     </tbody>
   </table>
-<h3>PANAMERA</h3>
+  <h3>PANAMERA</h3>
   <table id="listePanamera" class="table table-light table table-hover">
     <thead class="thead-dark">
       <th>ID</th>
@@ -104,4 +123,5 @@
     <tbody id="bodyPanamera">
     </tbody>
   </table>
+</section>
 </section>

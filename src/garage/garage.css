@@ -28,3 +28,6 @@ label{
 #alleweg{
   float:right;
 }
+#listeGesamt{
+  display: none;
+}

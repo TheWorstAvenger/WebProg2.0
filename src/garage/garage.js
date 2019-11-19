@@ -16,11 +16,18 @@ class GaragePage {
         var dataCayenne=JSON.parse(localStorage.getItem("cayenne"));
         var dataMacan=JSON.parse(localStorage.getItem("macan"));
         var dataPanamera=JSON.parse(localStorage.getItem("panamera"));
+        var dataGesamt = [];
 
         let table;
+        let listeGesamt = garagePage.querySelector('#listeGesamt');
+        let listenEinzeln =  garagePage.querySelector('#listenEinzeln');
 
-        var test=this.obejecArrayzuArray(data911);
-        console.log(test);
+        Array.prototype.push.apply(dataGesamt,data911);
+        Array.prototype.push.apply(dataGesamt,data718);
+        Array.prototype.push.apply(dataGesamt,dataCayenne);
+        Array.prototype.push.apply(dataGesamt,dataMacan);
+        Array.prototype.push.apply(dataGesamt,dataPanamera);
+        console.log(dataGesamt);
 
         if(data911 != null){
           var data911String = this.obejecArrayzuArray(data911);
@@ -68,11 +75,32 @@ class GaragePage {
           this.tabelleMitDatenFuellen(table, dataMacanString);
         }
 
+        var dataGesamtString = this.obejecArrayzuArray(dataGesamt);
+        table = garagePage.querySelector('#bodyGesamt');
+        //alles raus bis auf die Überschriften
+        this.tabelleLeerenAußerUeberschrift(table);
+        this.tabelleMitDatenFuellen(table, dataGesamtString);
+
 
         garagePage.querySelector('.localstorageloeschen').addEventListener('click', () => {
           console.log("ALLES LÖSCHEN!!");
           localStorage.clear();
           location.reload();
+        });
+
+        garagePage.querySelector('.nuranzeigen').addEventListener('change', function(event) {
+          console.log("nuranzeigen!!");
+          var index = event.target.value;
+          if(index=="Alle"){
+            listenEinzeln.style.display = "none";
+            listeGesamt.style.display = "block";
+          }
+          if(index=="Modell"){
+            listeGesamt.style.display = "none";
+            listenEinzeln.style.display = "block";
+          }
+          console.log(index);
+
         });
 
 
