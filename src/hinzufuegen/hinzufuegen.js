@@ -90,6 +90,7 @@ class HinzufuegenPage {
                 }
 
               console.log(newCar);
+              this.launch_toast();
 
               var key= newCar.id;
               var data = JSON.stringify(newCar);
@@ -194,6 +195,12 @@ class HinzufuegenPage {
     get title() {
         return "hinzufügen";
     }
+    launch_toast() {
+    var x = document.getElementById("toast")
+    console.log(x);
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 1000);
+}
 }
 
 export default HinzufuegenPage;
