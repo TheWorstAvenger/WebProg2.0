@@ -158,6 +158,34 @@ class GaragePage {
           }
       });
 
+          garagePage.querySelector('#sortierung').addEventListener('change', event => {
+            var auswahlIndex = event.path[0].selectedIndex;
+            var sortierung ;
+            var art = event.target.value.split(" ")[0].toLowerCase();
+            console.log(art);
+
+            if(auswahlIndex != 0){
+              if(auswahlIndex%2==0){
+                sortierung = "aufsteigend";
+              }
+              if(auswahlIndex%2!=0){
+                sortierung = "absteigend";
+              }
+              if(data911 != null)
+              this.sortieren(art, sortierung,"911", tb911);
+              if(data718 != null)
+              this.sortieren(art, sortierung,"718",  tb718);
+              if(dataCayenne != null)
+              this.sortieren(art, sortierung,"cayenne", tbCayenne);
+              if(dataMacan != null)
+              this.sortieren(art, sortierung,"macan", tbMacan);
+              if(dataPanamera != null)
+              this.sortieren(art, sortierung,"panamera", tbPanamera);
+              // if(dataGesamt != null)
+              // this.sortieren(art, sortierung,"gesamt", tbGesamt);
+
+            }
+          });
 
 
         return this._createContentObject(garagePage);
@@ -238,6 +266,41 @@ class GaragePage {
         }
         idCount++;
       }
+    }
+
+    sortieren(art, reihenfolge, modell, table){
+      var data = JSON.parse(localStorage.getItem(modell));
+      switch (art) {
+        case "leistung":
+            if(reihenfolge == "aufsteigend")
+              data.sort((a, b) => parseFloat(a.leistung) - parseFloat(b.leistung)); // aufsteigend
+            if(reihenfolge == "absteigend")
+              data.sort((a, b) => parseFloat(b.leistung) - parseFloat(a.leistung)); // absteigend
+          break;
+        case "nm":
+            if(reihenfolge == "aufsteigend")
+              data.sort((a, b) => parseFloat(a.nm) - parseFloat(b.nm)); // aufsteigend
+            if(reihenfolge == "absteigend")
+              data.sort((a, b) => parseFloat(b.nm) - parseFloat(a.nm)); // absteigend
+          break;
+        case "hubraum":
+            if(reihenfolge == "aufsteigend")
+              data.sort((a, b) => parseFloat(a.hubraum) - parseFloat(b.hubraum)); // aufsteigend
+            if(reihenfolge == "absteigend")
+              data.sort((a, b) => parseFloat(b.hubraum) - parseFloat(a.hubraum)); // absteigend
+          break;
+        case "id":
+            if(reihenfolge == "aufsteigend")
+              data.sort((a, b) => parseFloat(a.hubraum) - parseFloat(b.hubraum)); // aufsteigend
+            if(reihenfolge == "absteigend")
+              data.sort((a, b) => parseFloat(b.hubraum) - parseFloat(a.hubraum)); // absteigend
+          break;
+        default:
+
+      }
+
+      table.innerHTML="";
+      this.tabelleMitDatenFuellen(table, data);
     }
 
 }
