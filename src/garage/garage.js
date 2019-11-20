@@ -16,13 +16,7 @@ class GaragePage {
         var dataCayenne=JSON.parse(localStorage.getItem("cayenne"));
         var dataMacan=JSON.parse(localStorage.getItem("macan"));
         var dataPanamera=JSON.parse(localStorage.getItem("panamera"));
-        var dataGesamt = [];
-
-        Array.prototype.push.apply(dataGesamt,data911);
-        Array.prototype.push.apply(dataGesamt,data718);
-        Array.prototype.push.apply(dataGesamt,dataCayenne);
-        Array.prototype.push.apply(dataGesamt,dataMacan);
-        Array.prototype.push.apply(dataGesamt,dataPanamera);
+        var dataGesamt = this.gesamtDataArrayErstellen();
 
         var table;
         var tb911 = garagePage.querySelector('#body911');
@@ -92,12 +86,7 @@ class GaragePage {
           dataCayenne=JSON.parse(localStorage.getItem("cayenne"));
           dataMacan=JSON.parse(localStorage.getItem("macan"));
           dataPanamera=JSON.parse(localStorage.getItem("panamera"));
-          dataGesamt = [];
-          Array.prototype.push.apply(dataGesamt,data911);
-          Array.prototype.push.apply(dataGesamt,data718);
-          Array.prototype.push.apply(dataGesamt,dataCayenne);
-          Array.prototype.push.apply(dataGesamt,dataMacan);
-          Array.prototype.push.apply(dataGesamt,dataPanamera);
+          dataGesamt = this.gesamtDataArrayErstellen();
 
           console.log("nuranzeigen!!");
           var index = event.target.value;
@@ -162,7 +151,12 @@ class GaragePage {
             var auswahlIndex = event.path[0].selectedIndex;
             var sortierung ;
             var art = event.target.value.split(" ")[0].toLowerCase();
-            console.log(art);
+            data911=JSON.parse(localStorage.getItem("911"));
+            data718=JSON.parse(localStorage.getItem("718"));
+            dataCayenne=JSON.parse(localStorage.getItem("cayenne"));
+            dataMacan=JSON.parse(localStorage.getItem("macan"));
+            dataPanamera=JSON.parse(localStorage.getItem("panamera"));
+            dataGesamt = this.gesamtDataArrayErstellen();
 
             if(auswahlIndex != 0){
               if(auswahlIndex%2==0){
@@ -172,17 +166,17 @@ class GaragePage {
                 sortierung = "absteigend";
               }
               if(data911 != null)
-              this.sortieren(art, sortierung,"911", tb911);
+              this.sortieren(art, sortierung,"911", tb911, data911);
               if(data718 != null)
-              this.sortieren(art, sortierung,"718",  tb718);
+              this.sortieren(art, sortierung,"718",  tb718, data718);
               if(dataCayenne != null)
-              this.sortieren(art, sortierung,"cayenne", tbCayenne);
+              this.sortieren(art, sortierung,"cayenne", tbCayenne, dataCayenne);
               if(dataMacan != null)
-              this.sortieren(art, sortierung,"macan", tbMacan);
+              this.sortieren(art, sortierung,"macan", tbMacan, dataMacan);
               if(dataPanamera != null)
-              this.sortieren(art, sortierung,"panamera", tbPanamera);
-              // if(dataGesamt != null)
-              // this.sortieren(art, sortierung,"gesamt", tbGesamt);
+              this.sortieren(art, sortierung,"gesamt", tbPanamera, dataPanamera);
+              if(dataGesamt != null)
+              this.sortieren(art, sortierung,"gesamt", tbGesamt, dataGesamt);
 
             }
           });
@@ -208,6 +202,22 @@ class GaragePage {
 
     get title() {
         return "Garage";
+    }
+
+    gesamtDataArrayErstellen(){
+      var data911=JSON.parse(localStorage.getItem("911"));
+      var data718=JSON.parse(localStorage.getItem("718"));
+      var dataCayenne=JSON.parse(localStorage.getItem("cayenne"));
+      var dataMacan=JSON.parse(localStorage.getItem("macan"));
+      var dataPanamera=JSON.parse(localStorage.getItem("panamera"));
+      var dataGesamt = [];
+      Array.prototype.push.apply(dataGesamt,data911);
+      Array.prototype.push.apply(dataGesamt,data718);
+      Array.prototype.push.apply(dataGesamt,dataCayenne);
+      Array.prototype.push.apply(dataGesamt,dataMacan);
+      Array.prototype.push.apply(dataGesamt,dataPanamera);
+
+      return dataGesamt;
     }
 
     obejecArrayzuArray(objectArray){
@@ -268,8 +278,7 @@ class GaragePage {
       }
     }
 
-    sortieren(art, reihenfolge, modell, table){
-      var data = JSON.parse(localStorage.getItem(modell));
+    sortieren(art, reihenfolge, modell, table, data){
       switch (art) {
         case "leistung":
             if(reihenfolge == "aufsteigend")
@@ -291,9 +300,9 @@ class GaragePage {
           break;
         case "id":
             if(reihenfolge == "aufsteigend")
-              data.sort((a, b) => parseFloat(a.hubraum) - parseFloat(b.hubraum)); // aufsteigend
+              data.sort((a, b) => parseFloat(a.id) - parseFloat(b.id)); // aufsteigend
             if(reihenfolge == "absteigend")
-              data.sort((a, b) => parseFloat(b.hubraum) - parseFloat(a.hubraum)); // absteigend
+              data.sort((a, b) => parseFloat(b.id) - parseFloat(a.id)); // absteigend
           break;
         default:
 
