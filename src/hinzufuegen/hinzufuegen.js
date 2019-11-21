@@ -92,9 +92,6 @@ class HinzufuegenPage {
                   break;
                 }
 
-                console.log("NEWCAR")
-                console.log(newCar.karosserieform);
-
                 switch (newCar.karosserieform) {
                   case 0:
                     newCar.karosserieform = "Coupe";
@@ -220,8 +217,7 @@ class HinzufuegenPage {
         return "hinzufügen";
     }
     launch_toast() {
-    var x = document.getElementById("toast")
-    console.log(x);
+    var x = document.getElementById("toast");
     x.className = "show";
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 1000);
 }
