@@ -56,7 +56,7 @@ class HinzufuegenPage {
                 'modell': modellText,
                 'baureihe': baureiheText,
                 'variante': varianteText,
-                'baujahr': bj.value,
+                'baujahr': bj.value.split("-")[1]+"-"+bj.value.split("-")[0],
                 'karosserieform': $('input[name="karosserieform"]:checked').index()/2,
                 'leistung': document.getElementById('ps').value,
                 'nm': document.getElementById('nm').value,
