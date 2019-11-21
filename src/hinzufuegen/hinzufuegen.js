@@ -48,12 +48,15 @@ class HinzufuegenPage {
             var varianteMenu = document.getElementById('variante');
             var varianteText = varianteMenu.options[varianteMenu.selectedIndex].text;
 
+            var bj = document.getElementById('bj');
+
             if(modellText != "-----"){
               var newCar = {
                 'id': 1,
                 'modell': modellText,
                 'baureihe': baureiheText,
                 'variante': varianteText,
+                'baujahr': bj.value,
                 'karosserieform': $('input[name="karosserieform"]:checked').index()/2,
                 'leistung': document.getElementById('ps').value,
                 'nm': document.getElementById('nm').value,
@@ -87,6 +90,27 @@ class HinzufuegenPage {
                   newCar.id = idCounterPanamera++;
                   dataPanamera.push(newCar)
                   break;
+                }
+
+                console.log("NEWCAR")
+                console.log(newCar.karosserieform);
+
+                switch (newCar.karosserieform) {
+                  case 0:
+                    newCar.karosserieform = "Coupe";
+                    break;
+                  case 1:
+                    newCar.karosserieform = "Cabrio";
+                    break;
+                  case 2:
+                    newCar.karosserieform = "Targa";
+                    break;
+                  case 3:
+                    newCar.karosserieform = "Limosine";
+                    break;
+                  default:
+                    newCar.karosserieform = "-----";
+
                 }
 
               console.log(newCar);
