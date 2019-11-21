@@ -92,9 +92,6 @@ class HinzufuegenPage {
                   break;
                 }
 
-                console.log("NEWCAR")
-                console.log(newCar.karosserieform);
-
                 switch (newCar.karosserieform) {
                   case 0:
                     newCar.karosserieform = "Coupe";
@@ -171,14 +168,14 @@ class HinzufuegenPage {
 
               case "Panamera":
                   console.log("Panamera ausgewählt")
-                   baureiheOptionArray = ["-----", "970", "971"];
-                   varianteOptionArray =["-----", "4", "S", "4 S", "GTS", "S-Hybrid", "Turbo", "Turbo S", "Diesel", "S E-Hybrid","4 S Executive", "Turbo Executive", "Turbo S Executive"];
+                  baureiheOptionArray = ["-----", "970", "971"];
+                  varianteOptionArray =["-----", "4", "S", "4 S", "GTS", "S-Hybrid", "Turbo", "Turbo S", "Diesel", "S E-Hybrid","4 S Executive", "Turbo Executive", "Turbo S Executive"];
                 break;
 
               default:
-              console.log("---- ausgewählt")
-              baureiheOptionArray = ["-----"];
-              varianteOptionArray = ["-----"];
+                  console.log("---- ausgewählt")
+                  baureiheOptionArray = ["-----"];
+                  varianteOptionArray = ["-----"];
             }
 
             baureiheMenu.innerHTML="";
@@ -220,8 +217,7 @@ class HinzufuegenPage {
         return "hinzufügen";
     }
     launch_toast() {
-    var x = document.getElementById("toast")
-    console.log(x);
+    var x = document.getElementById("toast");
     x.className = "show";
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 1000);
 }
