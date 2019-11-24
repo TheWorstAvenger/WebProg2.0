@@ -48,12 +48,15 @@ class HinzufuegenPage {
             var varianteMenu = document.getElementById('variante');
             var varianteText = varianteMenu.options[varianteMenu.selectedIndex].text;
 
+            var bj = document.getElementById('bj');
+
             if(modellText != "-----"){
               var newCar = {
                 'id': 1,
                 'modell': modellText,
                 'baureihe': baureiheText,
                 'variante': varianteText,
+                'baujahr': bj.value.split("-")[1]+"-"+bj.value.split("-")[0],
                 'karosserieform': $('input[name="karosserieform"]:checked').index()/2,
                 'leistung': document.getElementById('ps').value,
                 'nm': document.getElementById('nm').value,
@@ -89,7 +92,26 @@ class HinzufuegenPage {
                   break;
                 }
 
+                switch (newCar.karosserieform) {
+                  case 0:
+                    newCar.karosserieform = "Coupe";
+                    break;
+                  case 1:
+                    newCar.karosserieform = "Cabrio";
+                    break;
+                  case 2:
+                    newCar.karosserieform = "Targa";
+                    break;
+                  case 3:
+                    newCar.karosserieform = "Limosine";
+                    break;
+                  default:
+                    newCar.karosserieform = "-----";
+
+                }
+
               console.log(newCar);
+              this.launch_toast();
 
               var key= newCar.id;
               var data = JSON.stringify(newCar);
@@ -146,14 +168,14 @@ class HinzufuegenPage {
 
               case "Panamera":
                   console.log("Panamera ausgewählt")
-                   baureiheOptionArray = ["-----", "970", "971"];
-                   varianteOptionArray =["-----", "4", "S", "4 S", "GTS", "S-Hybrid", "Turbo", "Turbo S", "Diesel", "S E-Hybrid","4 S Executive", "Turbo Executive", "Turbo S Executive"];
+                  baureiheOptionArray = ["-----", "970", "971"];
+                  varianteOptionArray =["-----", "4", "S", "4 S", "GTS", "S-Hybrid", "Turbo", "Turbo S", "Diesel", "S E-Hybrid","4 S Executive", "Turbo Executive", "Turbo S Executive"];
                 break;
 
               default:
-              console.log("---- ausgewählt")
-              baureiheOptionArray = ["-----"];
-              varianteOptionArray = ["-----"];
+                  console.log("---- ausgewählt")
+                  baureiheOptionArray = ["-----"];
+                  varianteOptionArray = ["-----"];
             }
 
             baureiheMenu.innerHTML="";
@@ -194,6 +216,11 @@ class HinzufuegenPage {
     get title() {
         return "hinzufügen";
     }
+    launch_toast() {
+    var x = document.getElementById("toast");
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 1000);
+}
 }
 
 export default HinzufuegenPage;
